@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Michael Eades Reserve: Bird Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #142129;
+    --ink-soft: #55686f;
+    --paper: #eef2f1;
+    --paper-raised: #e1e9e7;
+    --line: #c5d2cf;
+    --gum: #3d95a1;
+    --gum-deep: #0b6d78;
+    --sandstone: #dd8f2a;
+    --sandstone-soft: #f2bd6c;
+    --haze: #5457c2;
+    --bar-empty: #d7e0de;
+    --focus: #0b6d78;
+    --on-amber: #251705;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8edec;
+      --ink-soft: #9fb2b0;
+      --paper: #0a1416;
+      --paper-raised: #0f2023;
+      --line: #1e3437;
+      --gum: #4fb7c0;
+      --gum-deep: #6fdccd;
+      --sandstone: #f3a63d;
+      --sandstone-soft: #f7c579;
+      --haze: #9a9df2;
+      --bar-empty: #142628;
+      --focus: #6fdccd;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8edec;
+    --ink-soft: #9fb2b0;
+    --paper: #0a1416;
+    --paper-raised: #0f2023;
+    --line: #1e3437;
+    --gum: #4fb7c0;
+    --gum-deep: #6fdccd;
+    --sandstone: #f3a63d;
+    --sandstone-soft: #f7c579;
+    --haze: #9a9df2;
+    --bar-empty: #142628;
+    --focus: #6fdccd;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  body {
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display {
+    font-family: "Space Grotesk", -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+  header.top {
+    padding: 44px 0 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pilot-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--gum-deep);
+    background: color-mix(in srgb, var(--gum) 16%, transparent);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin: 0 0 12px;
+  }
+  header.top h1 {
+    font-size: clamp(2.1rem, 5.5vw, 3rem);
+    margin: 0 0 10px;
+    line-height: 1.04;
+  }
+  header.top p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    max-width: 56ch;
+  }
+  .top-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .top-text {
+    flex: 1 1 380px;
+    min-width: 0;
+  }
+  .walk-cta {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 9px;
+    max-width: 230px;
+    text-align: right;
+    padding-top: 2px;
+  }
+  .walk-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 16px 26px;
+    border-radius: 999px;
+    border: none;
+    background: var(--sandstone);
+    color: var(--on-amber);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .walk-cta-btn:hover { filter: brightness(1.08); }
+  .walk-cta-desc {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  @media (max-width: 560px) {
+    .top-flex { gap: 20px; }
+    .walk-cta {
+      align-items: flex-start;
+      text-align: left;
+      max-width: none;
+      width: 100%;
+    }
+    .walk-cta-btn { width: 100%; justify-content: center; }
+  }
+  .search-block {
+    margin-top: 26px;
+  }
+  form.ask {
+    display: flex;
+    gap: 8px;
+  }
+  input[type="text"] {
+    flex: 1;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 13px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    background: var(--paper-raised);
+    color: var(--ink);
+  }
+  input[type="text"]:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+  }
+  input[type="date"] {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    background: var(--paper-raised);
+    color: var(--ink);
+  }
+  input[type="date"]:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+  }
+  .walk-form {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 13px 20px;
+    border-radius: 999px;
+    border: none;
+    background: var(--gum-deep);
+    color: var(--paper);
+    cursor: pointer;
+  }
+  button:hover { filter: brightness(1.08); }
+  button:focus-visible, a:focus-visible, .chip:focus-visible, .species-row:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .chip {
+    font-size: 0.88rem;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .chip:hover { border-color: var(--gum); color: var(--gum-deep); }
+
+  details.glossary {
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--paper-raised);
+    padding: 2px 16px;
+  }
+  details.glossary.bottom-glossary {
+    margin-top: 48px;
+  }
+  details.glossary summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 12px 0;
+    color: var(--ink-soft);
+    list-style: none;
+  }
+  details.glossary summary::-webkit-details-marker { display: none; }
+  details.glossary summary::before {
+    content: "+ ";
+    color: var(--sandstone);
+    font-weight: 700;
+  }
+  details.glossary[open] summary::before { content: "\2212 "; }
+  details.glossary dl {
+    margin: 0 0 14px;
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+  }
+  details.glossary dt {
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 10px;
+  }
+  details.glossary dt:first-child { margin-top: 0; }
+  details.glossary dd { margin: 2px 0 0; }
+
+  .toggle-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .toggle-chip:hover { border-color: var(--gum); }
+  .toggle-chip.active {
+    background: var(--gum-deep);
+    border-color: var(--gum-deep);
+    color: var(--paper);
+  }
+  .toggle-chip .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+  .visual-group { margin: 14px 0; }
+  .visual-group-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+  }
+  #familySelect {
+    font-family: inherit;
+    font-size: 0.92rem;
+    padding: 10px 12px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    background: var(--paper-raised);
+    color: var(--ink);
+    width: 100%;
+    max-width: 320px;
+  }
+  #familySelect:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+  .visual-actions {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0 14px;
+  }
+
+  main { padding-top: 30px; }
+
+  .month-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 4px;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .month-tabs::-webkit-scrollbar { display: none; }
+  .month-tab {
+    flex: 0 0 auto;
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 8px 13px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .month-tab.active {
+    background: var(--gum-deep);
+    color: var(--paper);
+  }
+  .month-tab.is-current:not(.active) {
+    border-color: var(--sandstone);
+    color: var(--sandstone);
+  }
+
+  .view-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .view-heading h2 { font-size: 1.3rem; margin: 0; }
+  .view-sub { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 18px; }
+
+  .species-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .species-row.has-thumb { grid-template-columns: 48px 1fr auto; }
+  .species-row .row-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: var(--bar-empty);
+  }
+  .species-row:hover .common { color: var(--gum-deep); }
+  .species-row .names { min-width: 0; }
+  .species-row .common {
+    font-weight: 600;
+    font-size: 1.02rem;
+  }
+  .species-row .sci {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.86rem;
+  }
+  .species-row .note {
+    font-size: 0.8rem;
+    color: var(--sandstone);
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .freq-cell {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    justify-self: end;
+  }
+  .freq-label {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    width: 84px;
+    text-align: right;
+  }
+  .freq-track {
+    width: 70px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--bar-empty);
+    overflow: hidden;
+  }
+  .freq-fill {
+    height: 100%;
+    background: var(--gum);
+    border-radius: 999px;
+  }
+
+  .empty-note {
+    color: var(--ink-soft);
+    padding: 24px 4px;
+    font-size: 0.95rem;
+  }
+
+  /* species detail */
+  .detail-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--haze);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+  .home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+    line-height: 1;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    cursor: pointer;
+    padding: 0;
+  }
+  .home-btn:hover { border-color: var(--gum); }
+  .species-detail h2 {
+    font-size: 1.7rem;
+    margin: 0 0 2px;
+  }
+  .species-detail .sci-big {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    margin: 0 0 20px;
+  }
+  .photo-gallery { margin-bottom: 20px; }
+  .photo-main {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+    background: var(--bar-empty);
+  }
+  .photo-strip {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    overflow-x: auto;
+  }
+  .photo-thumb {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    opacity: 0.6;
+    border: 2px solid transparent;
+  }
+  .photo-thumb:hover { opacity: 0.85; }
+  .photo-thumb.active { opacity: 1; border-color: var(--sandstone); }
+  .photo-credit {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+  }
+  .photo-credit a { color: var(--haze); }
+  .headline-stat {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    font-size: 1rem;
+  }
+  .headline-stat b { color: var(--gum-deep); }
+  .sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 100px;
+    padding: 0 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .spark-bar {
+    flex: 1;
+    background: var(--gum);
+    border-radius: 2px 2px 0 0;
+    min-height: 2px;
+    position: relative;
+  }
+  .spark-bar.current-week { background: var(--sandstone); }
+  .spark-bar.empty-bar { background: var(--bar-empty); }
+  .month-labels {
+    display: flex;
+    margin-top: 6px;
+  }
+  .month-labels span {
+    flex: 1;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    margin-top: 18px;
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .external-links {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .external-links a {
+    color: var(--haze);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+  .external-links a:hover { text-decoration: underline; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+  footer a { color: var(--haze); }
+  .who-eades { margin-top: 14px; }
+  .who-eades summary {
+    cursor: pointer;
+    color: var(--haze);
+    font-weight: 600;
+    font-size: 0.84rem;
+    list-style: none;
+  }
+  .who-eades summary::-webkit-details-marker { display: none; }
+  .who-eades summary:hover { text-decoration: underline; }
+  .who-eades p {
+    margin: 10px 0 0;
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+  .who-eades p + p { margin-top: 8px; }
+
+  ::selection { background: var(--sandstone-soft); color: var(--gum-deep); }
+
+  @media (max-width: 480px) {
+    .freq-label { display: none; }
+    header.top { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="top-flex">
+      <div class="top-text">
+        <span class="pilot-badge">Community bird guide</span>
+        <h1>Michael Eades Reserve</h1>
+        <p>North Katoomba, Blue Mountains NSW. A local look at what to expect from the reserve's birdlife across the year, drawn from checklists submitted to eBird by local birders. 115 species recorded so far.</p>
+      </div>
+      <div class="walk-cta">
+        <button type="button" class="walk-cta-btn" id="chipWalk">I'm on a walk</button>
+        <p class="walk-cta-desc">Tell us the date and we'll list what to look and listen out for.</p>
+      </div>
+    </div>
+
+    <div class="search-block">
+      <form class="ask" id="askForm">
+        <input type="text" id="askInput" placeholder="Try 'small red bird', 'honeyeaters', or 'rare birds in August'" autocomplete="off">
+        <button type="submit">Ask</button>
+      </form>
+      <div class="chips">
+        <button type="button" class="chip" id="chipNow">This week</button>
+        <button type="button" class="chip" id="chipSeason">This season</button>
+        <button type="button" class="chip" id="chipAll">All species</button>
+      </div>
+      <details class="glossary" id="visualPanel">
+        <summary>Don't know the name? Browse by looks</summary>
+        <div class="visual-group">
+          <p class="visual-group-label">Colour</p>
+          <div class="chips" id="colourChips">
+            <button type="button" class="toggle-chip" data-colour="red"><span class="dot" style="background:#b3382c"></span>Red</button>
+            <button type="button" class="toggle-chip" data-colour="orange"><span class="dot" style="background:#c9772f"></span>Orange</button>
+            <button type="button" class="toggle-chip" data-colour="yellow"><span class="dot" style="background:#cfab3a"></span>Yellow</button>
+            <button type="button" class="toggle-chip" data-colour="green"><span class="dot" style="background:#5f7a3d"></span>Green</button>
+            <button type="button" class="toggle-chip" data-colour="blue"><span class="dot" style="background:#4a6f8a"></span>Blue</button>
+            <button type="button" class="toggle-chip" data-colour="pink"><span class="dot" style="background:#c98a9e"></span>Pink</button>
+            <button type="button" class="toggle-chip" data-colour="black"><span class="dot" style="background:#2b2b26"></span>Black</button>
+            <button type="button" class="toggle-chip" data-colour="white"><span class="dot" style="background:#f5f2e6;border:1px solid var(--line)"></span>White</button>
+            <button type="button" class="toggle-chip" data-colour="grey"><span class="dot" style="background:#8b8a7c"></span>Grey</button>
+            <button type="button" class="toggle-chip" data-colour="brown"><span class="dot" style="background:#6b4b30"></span>Brown</button>
+          </div>
+        </div>
+        <div class="visual-group">
+          <p class="visual-group-label">Size</p>
+          <div class="chips" id="sizeChips">
+            <button type="button" class="toggle-chip" data-size="tiny">Tiny (under 12cm)</button>
+            <button type="button" class="toggle-chip" data-size="small">Small (12&ndash;20cm)</button>
+            <button type="button" class="toggle-chip" data-size="medium">Medium (20&ndash;35cm)</button>
+            <button type="button" class="toggle-chip" data-size="large">Large (35&ndash;55cm)</button>
+            <button type="button" class="toggle-chip" data-size="very large">Very large (55cm+)</button>
+          </div>
+        </div>
+        <div class="visual-group">
+          <p class="visual-group-label">Family</p>
+          <select id="familySelect"></select>
+        </div>
+        <div class="visual-actions">
+          <button type="button" id="visualShowBtn">Show matches</button>
+          <button type="button" class="chip" id="visualClearBtn">Clear</button>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="main"></main>
+
+  <details class="glossary bottom-glossary">
+    <summary>What do "common" and "rare" mean here?</summary>
+    <dl>
+      <dt>Common</dt>
+      <dd>Reported on 60% or more of checklists that week. Expect to see or hear it on most visits.</dd>
+      <dt>Fairly common</dt>
+      <dd>Reported on 30&ndash;60% of checklists. Good odds, but not guaranteed.</dd>
+      <dt>Occasional</dt>
+      <dd>Reported on 10&ndash;30% of checklists. You might get lucky.</dd>
+      <dt>Uncommon</dt>
+      <dd>Reported on 3&ndash;10% of checklists. A nice find if you do.</dd>
+      <dt>Rare</dt>
+      <dd>Reported on under 3% of checklists. Genuinely unusual for this reserve.</dd>
+      <dt>Not recorded</dt>
+      <dd>No local records for this week yet. It could still be around, just hasn't been logged.</dd>
+    </dl>
+  </details>
+
+  <footer>
+    <p>Frequency shows the share of eBird checklists from this reserve that reported each species in that week of the year, not raw counts. A quiet week with few checklists submitted can look sparse even for common birds, so treat this as a guide, not a guarantee.</p>
+    <p>Built from the <a href="https://ebird.org/hotspot/L5765385" target="_blank" rel="noopener">Michael Eades Reserve eBird hotspot</a> (L5765385) bar chart data. A pilot template: the same approach could power a guide for any reserve with enough eBird coverage.</p>
+    <details class="who-eades">
+      <summary>Who was Michael Eades?</summary>
+      <p>Michael Eades (1954&ndash;2002), after whom this Reserve is dedicated, made a major contribution to a heightened awareness and understanding of the special and fragile natural environment of the Blue Mountains, which resulted in the recognition of environmentally sensitive land in Council's Land Environmental Plan 1991. Eades's work also contributed significantly to the eventual federal government listing, at a National level, of the Blue Mountains Sedge and Shrub swamps.</p>
+      <p>Eades was a champion of the need to protect the unique flora of the Mountains and identified a number of endangered plant species. He provided critical advice and support to community volunteer endeavours in bushland protection and the establishment of the Council's Bushcare Program.</p>
+    </details>
+  </footer>
+
+</div>
+
+<script id="bird-data" type="application/json">{"location": "Michael Eades Reserve, North Katoomba, NSW", "hotspotId": "L5765385", "sampleSizes": [10.0, 7.0, 9.0, 18.0, 7.0, 7.0, 12.0, 9.0, 10.0, 14.0, 4.0, 16.0, 12.0, 10.0, 8.0, 14.0, 6.0, 6.0, 10.0, 11.0, 5.0, 4.0, 10.0, 6.0, 8.0, 5.0, 8.0, 17.0, 5.0, 10.0, 9.0, 14.0, 8.0, 8.0, 9.0, 8.0, 7.0, 7.0, 7.0, 13.0, 7.0, 8.0, 4.0, 5.0, 4.0, 4.0, 4.0, 7.0], "species": [{"c": "Australian Wood Duck", "s": "Chenonetta jubata", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0588235, 0.0, 0.0, 0.1111111, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0769231, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2857143], "fam": "Waterbirds", "sz": "medium", "col": ["brown", "grey"]}, {"c": "Pacific Black Duck", "s": "Anas superciliosa", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1666667, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Waterbirds", "sz": "large", "col": ["brown"]}, {"c": "White-headed Pigeon", "s": "Columba leucomela", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pigeons & doves", "sz": "medium", "col": ["white", "grey"]}, {"c": "Brown Cuckoo-Dove", "s": "Macropygia phasianella", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pigeons & doves", "sz": "medium", "col": ["brown"]}, {"c": "Common Bronzewing", "s": "Phaps chalcoptera", "f": [0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0769231, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pigeons & doves", "sz": "medium", "col": ["brown", "green"]}, {"c": "Brush Bronzewing", "s": "Phaps elegans", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pigeons & doves", "sz": "medium", "col": ["brown", "green"]}, {"c": "Crested Pigeon", "s": "Ocyphaps lophotes", "f": [0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pigeons & doves", "sz": "medium", "col": ["grey", "brown"]}, {"c": "Wonga Pigeon", "s": "Leucosarcia melanoleuca", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pigeons & doves", "sz": "medium", "col": ["grey", "white"]}, {"c": "Bar-shouldered Dove", "s": "Geopelia humeralis", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.1111111, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.1428571], "fam": "Pigeons & doves", "sz": "medium", "col": ["brown", "grey"]}, {"c": "Pacific Koel", "s": "Eudynamys orientalis", "f": [0.0, 0.1428571, 0.3333333, 0.0555556, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.1538462, 0.1428571, 0.25, 0.5, 0.4, 0.0, 0.5, 0.0, 0.5714286], "fam": "Cuckoos", "sz": "medium", "col": ["black", "brown"]}, {"c": "Channel-billed Cuckoo", "s": "Scythrops novaehollandiae", "f": [0.0, 0.0, 0.0015, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.2857143, 0.0, 0.0769231, 0.0, 0.125, 0.5, 0.2, 0.0, 0.0, 0.0, 0.0], "fam": "Cuckoos", "sz": "very large", "col": ["grey"]}, {"c": "Shining Bronze-Cuckoo", "s": "Chalcites lucidus", "f": [0.0, 0.0, 0.0, 0.0555556, 0.2857143, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Cuckoos", "sz": "small", "col": ["green", "white"]}, {"c": "Pallid Cuckoo", "s": "Heteroscenes pallidus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Cuckoos", "sz": "medium", "col": ["grey"]}, {"c": "Fan-tailed Cuckoo", "s": "Cacomantis flabelliformis", "f": [0.3, 0.4285714, 0.2222222, 0.1111111, 0.4285714, 0.0, 0.0833333, 0.2222222, 0.0, 0.3571429, 0.25, 0.0625, 0.1666667, 0.3, 0.375, 0.2142857, 0.1666667, 0.1666667, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.2, 0.0, 0.0588235, 0.2, 0.1, 0.2222222, 0.5, 0.875, 0.375, 0.7777778, 1.0, 0.4285714, 0.4285714, 0.2857143, 0.6153846, 0.8571429, 0.25, 0.5, 0.6, 0.5, 0.5, 0.25, 0.4285714], "fam": "Cuckoos", "sz": "medium", "col": ["grey", "orange"], "flk": "55542907126"}, {"c": "Tawny Frogmouth", "s": "Podargus strigoides", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3076923, 0.1428571, 0.125, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Frogmouths & owls", "sz": "large", "col": ["grey", "brown"]}, {"c": "White-throated Needletail", "s": "Hirundapus caudacutus", "f": [0.0, 0.0, 0.1111111, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0], "fam": "Swifts", "sz": "small", "col": ["brown", "white"]}, {"c": "Pacific Swift", "s": "Apus pacificus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Swifts", "sz": "small", "col": ["black", "white"]}, {"c": "Masked Lapwing", "s": "Vanellus miles", "f": [0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.25, 0.2, 0.0, 0.0, 0.0, 0.0], "fam": "Lapwings & waders", "sz": "medium", "col": ["brown", "white", "black"]}, {"c": "Painted Buttonquail", "s": "Turnix varius", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Buttonquail", "sz": "small", "col": ["brown"]}, {"c": "Australasian Grebe", "s": "Tachybaptus novaehollandiae", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Waterbirds", "sz": "small", "col": ["brown"]}, {"c": "Australasian Darter", "s": "Anhinga novaehollandiae", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Waterbirds", "sz": "large", "col": ["black", "brown"]}, {"c": "White-necked Heron", "s": "Ardea pacifica", "f": [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Waterbirds", "sz": "very large", "col": ["grey", "white", "brown"]}, {"c": "Australian Pelican", "s": "Pelecanus conspicillatus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Waterbirds", "sz": "very large", "col": ["white", "black"]}, {"c": "Wedge-tailed Eagle", "s": "Aquila audax", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0909091, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Raptors", "sz": "very large", "col": ["brown", "black"]}, {"c": "Collared Sparrowhawk", "s": "Tachyspiza cirrocephala", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Raptors", "sz": "small", "col": ["grey", "brown"]}, {"c": "Grey Goshawk", "s": "Tachyspiza novaehollandiae", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0], "fam": "Raptors", "sz": "medium", "col": ["grey", "white"]}, {"c": "Brown Goshawk", "s": "Tachyspiza fasciata", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0015, 0.0, 0.1111111, 0.0, 0.1428571, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.25, 0.2, 0.0, 0.0, 0.0, 0.0], "fam": "Raptors", "sz": "medium", "col": ["brown", "grey"]}, {"c": "Australian Boobook", "s": "Ninox boobook", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0769231, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Frogmouths & owls", "sz": "medium", "col": ["brown"]}, {"c": "Laughing Kookaburra", "s": "Dacelo novaeguineae", "f": [0.5, 0.7142857, 0.7777778, 0.6111111, 0.4285714, 0.8571429, 0.6666667, 0.4444444, 0.4, 0.2142857, 0.25, 0.375, 0.3333333, 0.2, 0.5, 0.5, 0.0, 0.5, 0.5, 0.2727273, 0.2, 0.5, 0.4, 0.1666667, 0.375, 0.4, 0.375, 0.2941176, 0.4, 0.3, 0.1111111, 0.7857143, 0.5, 0.375, 0.5555556, 0.75, 0.7142857, 0.4285714, 0.4285714, 0.7692308, 0.4285714, 0.375, 0.5, 0.8, 0.5, 0.75, 0.0, 0.5714286], "fam": "Kingfishers & rollers", "sz": "large", "col": ["brown", "white", "blue"]}, {"c": "Sacred Kingfisher", "s": "Todiramphus sanctus", "f": [0.2, 0.0, 0.4444444, 0.2777778, 0.4285714, 0.2857143, 0.0833333, 0.0, 0.0015, 0.0714286, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.1428571, 0.0, 0.0, 0.1538462, 0.1428571, 0.375, 0.5, 0.2, 0.25, 0.25, 0.25, 0.1428571], "fam": "Kingfishers & rollers", "sz": "small", "col": ["blue", "orange"], "flk": "50789771911"}, {"c": "Dollarbird", "s": "Eurystomus orientalis", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Kingfishers & rollers", "sz": "medium", "col": ["blue", "brown"]}, {"c": "Peregrine Falcon", "s": "Falco peregrinus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Raptors", "sz": "large", "col": ["grey", "white", "black"]}, {"c": "Yellow-tailed Black-Cockatoo", "s": "Zanda funerea", "f": [0.5, 0.4285714, 0.4444444, 0.5555556, 0.7142857, 0.5714286, 0.75, 0.4444444, 0.4, 0.7142857, 0.5, 0.25, 0.3333333, 0.3, 0.625, 0.5, 0.5, 0.3333333, 0.4, 0.4545455, 0.2, 0.5, 0.3, 0.6666667, 0.25, 0.6, 0.75, 0.3529412, 0.2, 0.8, 0.6666667, 0.2857143, 0.625, 0.125, 0.2222222, 0.5, 0.2857143, 0.4285714, 0.4285714, 0.1538462, 0.8571429, 0.5, 0.75, 0.4, 0.75, 0.75, 0.75, 0.5714286], "fam": "Cockatoos", "sz": "very large", "col": ["black", "yellow"], "flk": "53852416247"}, {"c": "Glossy Black-Cockatoo", "s": "Calyptorhynchus lathami", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Cockatoos", "sz": "large", "col": ["black", "red"]}, {"c": "black-cockatoo sp.", "s": "Calyptorhynchus/Zanda sp.", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Cockatoos", "sz": "large", "col": ["black"]}, {"c": "Gang-gang Cockatoo", "s": "Callocephalon fimbriatum", "f": [0.0, 0.4285714, 0.4444444, 0.2222222, 0.1428571, 0.4285714, 0.0833333, 0.2222222, 0.1, 0.3571429, 0.5, 0.4375, 0.3333333, 0.4, 0.125, 0.3571429, 0.6666667, 0.0, 0.5, 0.3636364, 0.6, 0.25, 0.2, 0.1666667, 0.25, 0.2, 0.375, 0.1764706, 0.4, 0.2, 0.3333333, 0.2857143, 0.375, 0.125, 0.3333333, 0.25, 0.1428571, 0.0, 0.0, 0.0769231, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.1428571], "fam": "Cockatoos", "sz": "medium", "col": ["grey", "red"], "flk": "55228782666"}, {"c": "Galah", "s": "Eolophus roseicapilla", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.1111111, 0.1, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Cockatoos", "sz": "medium", "col": ["pink", "grey"]}, {"c": "Little Corella", "s": "Cacatua sanguinea", "f": [0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Cockatoos", "sz": "medium", "col": ["white"]}, {"c": "Sulphur-crested Cockatoo", "s": "Cacatua galerita", "f": [0.0, 0.4285714, 0.2222222, 0.1666667, 0.5714286, 0.7142857, 0.4166667, 0.2222222, 0.3, 0.3571429, 0.5, 0.5, 0.5833333, 0.3, 0.375, 0.5714286, 0.1666667, 0.5, 0.3, 0.2727273, 0.4, 0.5, 0.4, 0.3333333, 0.25, 0.2, 0.5, 0.5294118, 0.4, 0.3, 0.5555556, 0.3571429, 0.375, 0.0, 0.6666667, 0.125, 0.0, 0.2857143, 0.2857143, 0.4615385, 0.4285714, 0.125, 0.25, 0.4, 0.25, 0.25, 0.25, 0.5714286], "fam": "Cockatoos", "sz": "large", "col": ["white", "yellow"]}, {"c": "Australian King-Parrot", "s": "Alisterus scapularis", "f": [0.0, 0.2857143, 0.1111111, 0.1111111, 0.2857143, 0.2857143, 0.1666667, 0.0, 0.4, 0.1428571, 0.5, 0.0625, 0.0833333, 0.0, 0.375, 0.3571429, 0.1666667, 0.5, 0.3, 0.0, 0.0, 0.25, 0.1, 0.1666667, 0.125, 0.0, 0.25, 0.1764706, 0.0015, 0.0, 0.1111111, 0.1428571, 0.0, 0.0, 0.1111111, 0.0, 0.1428571, 0.0, 0.1428571, 0.0769231, 0.5714286, 0.125, 0.25, 0.4, 0.0, 0.0, 0.0, 0.2857143], "fam": "Parrots & lorikeets", "sz": "large", "col": ["red", "green"]}, {"c": "Crimson Rosella", "s": "Platycercus elegans", "f": [1.0, 0.8571429, 1.0, 0.8333333, 1.0, 0.8571429, 0.8333333, 0.8888889, 0.9, 1.0, 1.0, 0.875, 0.9166667, 0.7, 0.875, 0.9285714, 1.0, 0.8333333, 1.0, 0.8181818, 0.8, 1.0, 1.0, 1.0, 0.75, 1.0, 1.0, 0.9411765, 1.0, 1.0, 0.8888889, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.7142857, 1.0, 0.9230769, 1.0, 0.875, 0.75, 1.0, 0.75, 1.0, 1.0, 0.8571429], "fam": "Parrots & lorikeets", "sz": "medium", "col": ["red", "blue"]}, {"c": "Eastern Rosella", "s": "Platycercus eximius", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0909091, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Parrots & lorikeets", "sz": "medium", "col": ["red", "yellow", "green"]}, {"c": "Little Lorikeet", "s": "Psitteuteles pusillus", "f": [0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Parrots & lorikeets", "sz": "tiny", "col": ["green", "red"]}, {"c": "Rainbow Lorikeet", "s": "Trichoglossus moluccanus", "f": [0.0, 0.1428571, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.1, 0.2727273, 0.2, 0.0, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.25, 0.25, 0.25, 0.0], "fam": "Parrots & lorikeets", "sz": "medium", "col": ["blue", "green", "orange"]}, {"c": "Superb Lyrebird", "s": "Menura novaehollandiae", "f": [0.0, 0.0, 0.1111111, 0.0, 0.1428571, 0.1428571, 0.0833333, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1666667, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Lyrebird", "sz": "very large", "col": ["brown"]}, {"c": "Satin Bowerbird", "s": "Ptilonorhynchus violaceus", "f": [0.2, 0.0, 0.1111111, 0.1666667, 0.5714286, 0.1428571, 0.1666667, 0.0, 0.1, 0.1428571, 0.25, 0.125, 0.25, 0.1, 0.125, 0.5, 0.1666667, 0.1666667, 0.1, 0.1818182, 0.4, 0.25, 0.1, 0.1666667, 0.125, 0.2, 0.25, 0.1764706, 0.0, 0.1, 0.1111111, 0.2142857, 0.0, 0.0, 0.1111111, 0.125, 0.1428571, 0.2857143, 0.0, 0.1538462, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.25, 0.25, 0.1428571], "fam": "Bowerbirds", "sz": "medium", "col": ["blue", "black", "green"]}, {"c": "White-throated Treecreeper", "s": "Cormobates leucophaea", "f": [0.8, 1.0, 1.0, 0.8333333, 1.0, 0.8571429, 0.8333333, 0.8888889, 1.0, 0.7142857, 1.0, 0.6875, 0.8333333, 0.8, 0.75, 1.0, 0.8333333, 0.6666667, 0.8, 0.8181818, 0.8, 1.0, 0.9, 0.6666667, 0.875, 0.8, 1.0, 1.0, 1.0, 0.8, 1.0, 1.0, 1.0, 0.875, 1.0, 1.0, 1.0, 0.7142857, 1.0, 0.8461538, 1.0, 0.875, 1.0, 1.0, 0.75, 1.0, 0.5, 0.8571429], "fam": "Treecreepers", "sz": "small", "col": ["brown", "white"], "flk": "55229029404"}, {"c": "Red-browed Treecreeper", "s": "Climacteris erythrops", "f": [0.2, 0.4285714, 0.2222222, 0.2777778, 0.2857143, 0.4285714, 0.1666667, 0.3333333, 0.2, 0.3571429, 0.0, 0.0625, 0.25, 0.1, 0.375, 0.2142857, 0.3333333, 0.5, 0.4, 0.0, 0.2, 0.5, 0.0, 0.0, 0.125, 0.6, 0.125, 0.2941176, 0.0, 0.4, 0.1111111, 0.2857143, 0.25, 0.125, 0.3333333, 0.25, 0.2857143, 0.1428571, 0.0015, 0.2307692, 0.4285714, 0.0, 0.5, 0.0, 0.25, 0.25, 0.0, 0.0], "fam": "Treecreepers", "sz": "small", "col": ["brown"], "flk": "53031025290"}, {"c": "Variegated Fairywren", "s": "Malurus lamberti", "f": [0.2, 0.0, 0.3333333, 0.0555556, 0.1428571, 0.1428571, 0.1666667, 0.3333333, 0.0, 0.0, 0.0, 0.125, 0.0, 0.1, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0588235, 0.0, 0.1, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2857143, 0.0, 0.0, 0.0769231, 0.2857143, 0.125, 0.25, 0.2, 0.0, 0.25, 0.0, 0.1428571], "fam": "Fairywrens", "sz": "tiny", "col": ["blue", "black", "brown"], "flk": "50789888532"}, {"c": "Superb Fairywren", "s": "Malurus cyaneus", "f": [0.1, 0.2857143, 0.2222222, 0.1111111, 0.0, 0.0, 0.1666667, 0.1111111, 0.2, 0.5, 0.0, 0.0625, 0.0, 0.1, 0.25, 0.2857143, 0.0, 0.0, 0.5, 0.4545455, 0.0, 0.5, 0.3, 0.1666667, 0.125, 0.6, 0.125, 0.1176471, 0.2, 0.0, 0.2222222, 0.1428571, 0.0, 0.25, 0.1111111, 0.25, 0.1428571, 0.0, 0.1428571, 0.2307692, 0.0, 0.125, 0.25, 0.2, 0.0, 0.5, 0.0, 0.1428571], "fam": "Fairywrens", "sz": "tiny", "col": ["blue", "black", "brown"]}, {"c": "fairywren sp.", "s": "Malurus sp.", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0], "fam": "Fairywrens", "sz": "tiny", "col": ["blue", "brown"]}, {"c": "Eastern Spinebill", "s": "Acanthorhynchus tenuirostris", "f": [0.8, 0.5714286, 0.7777778, 0.6111111, 1.0, 0.8571429, 0.4166667, 0.7777778, 0.8, 0.7857143, 0.75, 0.625, 0.75, 0.6, 1.0, 0.8571429, 0.5, 1.0, 0.9, 0.6363636, 0.8, 1.0, 0.7, 0.8333333, 0.625, 1.0, 0.75, 0.8823529, 0.8, 0.6, 0.8888889, 0.7857143, 0.625, 0.625, 0.8888889, 0.875, 0.4285714, 0.2857143, 0.8571429, 0.4615385, 0.8571429, 0.625, 0.25, 0.6, 0.75, 1.0, 0.75, 0.7142857], "fam": "Honeyeaters", "sz": "small", "col": ["grey", "orange"]}, {"c": "Lewin's Honeyeater", "s": "Meliphaga lewinii", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["green", "grey"]}, {"c": "Yellow-faced Honeyeater", "s": "Caligavis chrysops", "f": [0.0, 0.1428571, 0.4444444, 0.0555556, 0.0, 0.1428571, 0.0, 0.0, 0.1, 0.0714286, 0.0, 0.0625, 0.3333333, 0.4, 0.625, 0.7142857, 0.6666667, 0.6666667, 0.5, 0.0909091, 0.8, 0.5, 0.2, 0.1666667, 0.25, 0.4, 0.375, 0.7647059, 0.6, 0.4, 0.7777778, 0.7857143, 0.875, 0.875, 0.6666667, 0.875, 0.7142857, 0.4285714, 0.2857143, 0.0, 0.2857143, 0.125, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["yellow", "grey"]}, {"c": "Noisy Miner", "s": "Manorina melanocephala", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "medium", "col": ["grey", "yellow"]}, {"c": "Little Wattlebird", "s": "Anthochaera chrysoptera", "f": [0.1, 0.2857143, 0.3333333, 0.0555556, 0.1428571, 0.4285714, 0.25, 0.3333333, 0.1, 0.4285714, 0.25, 0.3125, 0.3333333, 0.3, 0.375, 0.2142857, 0.3333333, 0.5, 0.1, 0.2727273, 0.0, 0.25, 0.2, 0.0, 0.25, 0.0, 0.125, 0.2352941, 0.0, 0.3, 0.1111111, 0.2857143, 0.125, 0.125, 0.2222222, 0.0, 0.1428571, 0.0, 0.0, 0.1538462, 0.2857143, 0.125, 0.25, 0.2, 0.5, 0.5, 0.0, 0.2857143], "fam": "Honeyeaters", "sz": "medium", "col": ["brown", "grey"], "flk": "53589181722"}, {"c": "Red Wattlebird", "s": "Anthochaera carunculata", "f": [0.5, 0.5714286, 0.8888889, 0.6666667, 0.8571429, 0.5714286, 0.5, 0.7777778, 0.7, 0.5, 0.75, 0.8125, 0.6666667, 0.5, 0.875, 1.0, 1.0, 0.8333333, 1.0, 0.8181818, 1.0, 1.0, 0.9, 0.8333333, 1.0, 1.0, 0.875, 0.9411765, 1.0, 0.9, 0.7777778, 0.8571429, 0.75, 1.0, 0.8888889, 1.0, 0.8571429, 0.2857143, 0.5714286, 0.5384615, 0.8571429, 0.625, 0.5, 0.8, 0.75, 1.0, 0.75, 0.8571429], "fam": "Honeyeaters", "sz": "large", "col": ["brown", "grey"]}, {"c": "Fuscous Honeyeater", "s": "Ptilotula fusca", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["grey", "yellow"]}, {"c": "Scarlet Honeyeater", "s": "Myzomela sanguinolenta", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "tiny", "col": ["red", "black"]}, {"c": "New Holland Honeyeater", "s": "Phylidonyris novaehollandiae", "f": [0.5, 0.5714286, 0.6666667, 0.5555556, 1.0, 0.8571429, 0.75, 0.7777778, 0.9, 0.9285714, 0.75, 0.625, 0.6666667, 0.4, 0.875, 0.9285714, 0.6666667, 0.8333333, 0.6, 0.4545455, 0.4, 0.75, 0.8, 0.6666667, 0.375, 0.6, 0.75, 0.6470588, 0.2, 0.4, 0.5555556, 0.6428571, 0.75, 0.375, 0.6666667, 0.625, 0.5714286, 0.0, 0.5714286, 0.3076923, 0.5714286, 0.5, 0.5, 0.4, 0.5, 0.75, 1.0, 0.7142857], "fam": "Honeyeaters", "sz": "small", "col": ["black", "white", "yellow"]}, {"c": "White-cheeked Honeyeater", "s": "Phylidonyris niger", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["black", "white", "yellow"]}, {"c": "White-eared Honeyeater", "s": "Nesoptilotis leucotis", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0625, 0.0, 0.0, 0.125, 0.1428571, 0.1666667, 0.0, 0.2, 0.0909091, 0.2, 0.0, 0.0, 0.1666667, 0.0, 0.2, 0.0, 0.0588235, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["green", "black", "white"]}, {"c": "White-naped Honeyeater", "s": "Melithreptus lunatus", "f": [0.0, 0.0, 0.1111111, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.4285714, 0.1666667, 0.5, 0.4, 0.0, 0.0, 0.0, 0.2, 0.1666667, 0.125, 0.0, 0.125, 0.4117647, 0.0, 0.0, 0.5555556, 0.4285714, 0.125, 0.25, 0.2222222, 0.125, 0.1428571, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["grey", "black", "white"]}, {"c": "Brown-headed Honeyeater", "s": "Melithreptus brevirostris", "f": [0.0, 0.0, 0.1111111, 0.0555556, 0.0, 0.0, 0.0, 0.1111111, 0.2, 0.0714286, 0.0, 0.0625, 0.1666667, 0.0, 0.0, 0.1428571, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.4, 0.1666667, 0.25, 0.2, 0.125, 0.2352941, 0.0, 0.0, 0.0, 0.1428571, 0.25, 0.25, 0.0, 0.0, 0.2857143, 0.0, 0.0, 0.0, 0.1428571, 0.25, 0.0, 0.0, 0.25, 0.25, 0.0, 0.0], "fam": "Honeyeaters", "sz": "small", "col": ["brown", "grey"], "flk": "53030642751"}, {"c": "Noisy Friarbird", "s": "Philemon corniculatus", "f": [0.1, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.0625, 0.0833333, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.125, 0.125, 0.1111111, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Honeyeaters", "sz": "medium", "col": ["grey", "brown"]}, {"c": "Spotted Pardalote", "s": "Pardalotus punctatus", "f": [0.1, 0.2857143, 0.4444444, 0.1111111, 0.0, 0.1428571, 0.0, 0.2222222, 0.1, 0.2857143, 0.25, 0.125, 0.0833333, 0.0, 0.375, 0.2857143, 0.0, 0.1666667, 0.1, 0.0, 0.0, 0.25, 0.0, 0.1666667, 0.0, 0.0, 0.25, 0.3529412, 0.4, 0.2, 0.4444444, 0.5, 0.25, 0.625, 0.5555556, 0.75, 1.0, 0.2857143, 0.2857143, 0.2307692, 0.5714286, 0.25, 0.5, 0.4, 0.5, 0.5, 0.5, 0.1428571], "fam": "Pardalotes", "sz": "tiny", "col": ["black", "yellow", "white"]}, {"c": "Striated Pardalote", "s": "Pardalotus striatus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0015, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Pardalotes", "sz": "tiny", "col": ["black", "yellow", "white"]}, {"c": "Pilotbird", "s": "Pycnoptilus floccosus", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Scrubwrens & allies", "sz": "small", "col": ["brown", "orange"]}, {"c": "Chestnut-rumped Heathwren", "s": "Hylacola pyrrhopygia", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Scrubwrens & allies", "sz": "small", "col": ["brown", "orange"]}, {"c": "White-browed Scrubwren", "s": "Sericornis frontalis", "f": [0.3, 0.5714286, 0.3333333, 0.2777778, 0.4285714, 0.7142857, 0.25, 0.3333333, 0.1, 0.4285714, 0.25, 0.4375, 0.4166667, 0.2, 0.375, 0.6428571, 0.0015, 0.6666667, 0.4, 0.2727273, 0.4, 0.75, 0.3, 0.3333333, 0.125, 0.2, 0.25, 0.4705882, 0.4, 0.3, 0.1111111, 0.7142857, 0.625, 0.375, 0.4444444, 1.0, 0.7142857, 0.1428571, 0.2857143, 0.3846154, 0.1428571, 0.25, 0.5, 0.8, 0.5, 0.5, 0.25, 0.4285714], "fam": "Scrubwrens & allies", "sz": "small", "col": ["brown", "white"]}, {"c": "Large-billed Scrubwren", "s": "Sericornis magnirostra", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Scrubwrens & allies", "sz": "small", "col": ["brown"]}, {"c": "Yellow-rumped Thornbill", "s": "Acanthiza chrysorrhoa", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["yellow", "brown"]}, {"c": "Yellow Thornbill", "s": "Acanthiza nana", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["yellow", "green"]}, {"c": "Striated Thornbill", "s": "Acanthiza lineata", "f": [0.6, 0.2857143, 0.5555556, 0.6666667, 0.2857143, 0.5714286, 0.5833333, 0.7777778, 0.4, 0.5714286, 0.5, 0.375, 0.5833333, 0.6, 0.75, 0.7142857, 0.6666667, 0.5, 1.0, 0.6363636, 0.6, 0.75, 0.7, 0.5, 0.625, 1.0, 0.75, 0.7058824, 0.6, 1.0, 0.4444444, 0.7142857, 0.625, 0.75, 0.4444444, 0.5, 0.5714286, 0.2857143, 0.4285714, 0.5384615, 0.4285714, 0.75, 0.25, 0.8, 0.75, 0.75, 0.25, 0.5714286], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["brown", "yellow"], "flk": "51225778606"}, {"c": "Brown Thornbill", "s": "Acanthiza pusilla", "f": [0.6, 0.8571429, 0.8888889, 0.8888889, 1.0, 0.8571429, 0.6666667, 0.8888889, 0.8, 0.7857143, 0.75, 0.9375, 0.75, 0.6, 0.875, 0.9285714, 1.0, 0.8333333, 0.9, 0.7272727, 0.8, 1.0, 0.8, 1.0, 1.0, 1.0, 1.0, 0.8823529, 1.0, 0.8, 1.0, 1.0, 1.0, 0.875, 0.7777778, 1.0, 0.8571429, 0.4285714, 1.0, 0.9230769, 0.5714286, 0.875, 0.75, 1.0, 0.75, 0.75, 0.75, 0.8571429], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["brown"], "flk": "55229027974"}, {"c": "Buff-rumped Thornbill", "s": "Acanthiza reguloides", "f": [0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.1, 0.0, 0.0, 0.1666667, 0.0, 0.1, 0.0909091, 0.0, 0.0, 0.0, 0.3333333, 0.0, 0.0, 0.125, 0.0588235, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["brown", "yellow"]}, {"c": "thornbill sp.", "s": "Acanthiza sp.", "f": [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0588235, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["brown"]}, {"c": "Brown Gerygone", "s": "Gerygone mouki", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Thornbills & gerygones", "sz": "tiny", "col": ["brown", "grey"]}, {"c": "Black-faced Cuckooshrike", "s": "Coracina novaehollandiae", "f": [0.6, 0.1428571, 0.4444444, 0.5555556, 0.7142857, 0.7142857, 0.3333333, 0.3333333, 0.2, 0.3571429, 0.25, 0.25, 0.0833333, 0.2, 0.125, 0.2142857, 0.1666667, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.1176471, 0.0, 0.0, 0.2222222, 0.2142857, 0.125, 0.375, 0.3333333, 0.375, 0.5714286, 0.8571429, 0.4285714, 0.3846154, 0.5714286, 0.5, 0.25, 0.6, 0.5, 0.75, 0.25, 0.4285714], "fam": "Cuckooshrikes", "sz": "medium", "col": ["grey", "black"], "flk": "49406383041"}, {"c": "Varied Sittella", "s": "Daphoenositta chrysoptera", "f": [0.0, 0.0, 0.2222222, 0.1111111, 0.2857143, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.25, 0.0, 0.1666667, 0.1, 0.0, 0.0714286, 0.0, 0.0, 0.1, 0.0909091, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0588235, 0.0, 0.2, 0.1111111, 0.1428571, 0.0015, 0.375, 0.0, 0.125, 0.0, 0.0, 0.1428571, 0.1538462, 0.2857143, 0.0, 0.0, 0.2, 0.25, 0.25, 0.0, 0.0], "fam": "Sittellas", "sz": "small", "col": ["black", "white", "orange"], "flk": "51225987448"}, {"c": "Eastern Whipbird", "s": "Psophodes olivaceus", "f": [0.1, 0.4285714, 0.5555556, 0.1666667, 0.0, 0.5714286, 0.3333333, 0.1111111, 0.3, 0.2142857, 0.25, 0.125, 0.0833333, 0.1, 0.125, 0.2142857, 0.3333333, 0.0, 0.0, 0.0909091, 0.0, 0.25, 0.4, 0.1666667, 0.0, 0.2, 0.375, 0.1764706, 0.2, 0.3, 0.1111111, 0.5714286, 0.25, 0.0, 0.5555556, 0.625, 0.2857143, 0.2857143, 0.4285714, 0.2307692, 0.2857143, 0.0, 0.25, 0.4, 0.25, 0.5, 0.5, 0.1428571], "fam": "Whipbirds & allies", "sz": "medium", "col": ["black", "green"], "flk": "55541881977"}, {"c": "Eastern Shrike-tit", "s": "Falcunculus frontatus", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0], "fam": "Whistlers & allies", "sz": "small", "col": ["yellow", "black", "white"], "flk": "53031124383"}, {"c": "Grey Shrikethrush", "s": "Colluricincla harmonica", "f": [0.4, 0.4285714, 0.6666667, 0.3888889, 0.5714286, 0.5714286, 0.5, 0.3333333, 0.4, 0.5, 0.5, 0.4375, 0.5, 0.3, 0.375, 0.3571429, 0.1666667, 0.6666667, 0.4, 0.3636364, 0.6, 0.75, 0.4, 0.5, 0.375, 1.0, 0.625, 0.5882353, 0.8, 0.3, 0.4444444, 0.7142857, 0.125, 0.5, 0.5555556, 0.75, 0.5714286, 0.4285714, 0.1428571, 0.3846154, 0.5714286, 0.5, 0.0, 0.4, 0.5, 0.75, 0.75, 0.5714286], "fam": "Whistlers & allies", "sz": "medium", "col": ["grey", "brown"], "flk": "55229192780"}, {"c": "Golden Whistler", "s": "Pachycephala pectoralis", "f": [0.2, 0.1428571, 0.4444444, 0.3888889, 0.4285714, 0.2857143, 0.5, 0.5555556, 0.5, 0.7142857, 0.75, 0.375, 0.25, 0.3, 0.375, 0.2142857, 0.5, 0.3333333, 0.5, 0.4545455, 0.6, 0.5, 0.2, 0.0, 0.25, 0.4, 0.375, 0.2941176, 0.2, 0.4, 0.5555556, 0.6428571, 0.875, 0.625, 0.8888889, 0.875, 0.8571429, 0.4285714, 0.7142857, 0.5384615, 0.4285714, 0.5, 0.5, 0.2, 0.75, 0.5, 0.25, 0.1428571], "fam": "Whistlers & allies", "sz": "small", "col": ["yellow", "black", "white"]}, {"c": "Rufous Whistler", "s": "Pachycephala rufiventris", "f": [0.6, 0.7142857, 0.6666667, 0.7222222, 0.7142857, 0.4285714, 0.4166667, 0.3333333, 0.4, 0.2857143, 0.25, 0.1875, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.25, 0.3333333, 0.375, 0.5714286, 0.2857143, 0.7142857, 0.6153846, 0.8571429, 0.625, 0.75, 1.0, 0.75, 1.0, 0.75, 0.8571429], "fam": "Whistlers & allies", "sz": "small", "col": ["orange", "grey", "white"]}, {"c": "Olive-backed Oriole", "s": "Oriolus sagittatus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0769231, 0.0, 0.125, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0], "fam": "Orioles", "sz": "medium", "col": ["green", "grey"], "flk": "51180404890"}, {"c": "Dusky Woodswallow", "s": "Artamus cyanopterus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Butcherbirds, magpies, currawongs & woodswallows", "sz": "small", "col": ["grey", "brown"]}, {"c": "Grey Butcherbird", "s": "Cracticus torquatus", "f": [0.2, 0.0, 0.1111111, 0.1666667, 0.4285714, 0.4285714, 0.1666667, 0.4444444, 0.6, 0.2142857, 0.5, 0.3125, 0.3333333, 0.2, 0.5, 0.3571429, 0.0, 0.3333333, 0.2, 0.1818182, 0.0, 0.0, 0.1, 0.0, 0.125, 0.0, 0.25, 0.1176471, 0.2, 0.0, 0.2222222, 0.1428571, 0.25, 0.0, 0.3333333, 0.25, 0.2857143, 0.1428571, 0.0, 0.0769231, 0.0, 0.125, 0.0, 0.4, 0.25, 0.25, 0.0, 0.1428571], "fam": "Butcherbirds, magpies, currawongs & woodswallows", "sz": "medium", "col": ["grey", "black", "white"]}, {"c": "Australian Magpie", "s": "Gymnorhina tibicen", "f": [0.5, 1.0, 1.0, 0.6666667, 0.7142857, 0.7142857, 0.8333333, 0.7777778, 0.8, 0.6428571, 0.75, 0.75, 0.6666667, 0.5, 0.25, 0.5714286, 0.6666667, 0.6666667, 0.8, 0.6363636, 0.6, 0.25, 0.8, 0.8333333, 0.625, 0.6, 0.875, 0.7058824, 0.4, 0.9, 0.5555556, 0.8571429, 0.875, 0.375, 0.8888889, 1.0, 0.7142857, 0.7142857, 0.7142857, 0.7692308, 0.7142857, 0.75, 1.0, 0.6, 0.75, 0.75, 0.75, 0.7142857], "fam": "Butcherbirds, magpies, currawongs & woodswallows", "sz": "large", "col": ["black", "white"]}, {"c": "Pied Currawong", "s": "Strepera graculina", "f": [0.5, 0.8571429, 0.8888889, 0.6666667, 0.7142857, 0.7142857, 0.6666667, 0.7777778, 0.9, 0.7857143, 1.0, 0.6875, 0.8333333, 0.6, 0.875, 0.7142857, 0.6666667, 0.6666667, 0.4, 0.5454545, 0.4, 0.5, 0.8, 0.8333333, 0.875, 0.6, 0.75, 0.8823529, 0.8, 0.8, 0.7777778, 1.0, 0.75, 1.0, 1.0, 1.0, 0.8571429, 0.8571429, 0.8571429, 0.8461538, 1.0, 0.75, 1.0, 0.8, 1.0, 0.75, 0.75, 0.5714286], "fam": "Butcherbirds, magpies, currawongs & woodswallows", "sz": "large", "col": ["black", "white"]}, {"c": "Grey Currawong", "s": "Strepera versicolor", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0015, 0.25, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Butcherbirds, magpies, currawongs & woodswallows", "sz": "large", "col": ["grey", "black", "white"]}, {"c": "Willie Wagtail", "s": "Rhipidura leucophrys", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Fantails, flycatchers & magpie-lark", "sz": "small", "col": ["black", "white"]}, {"c": "Australian Rufous Fantail", "s": "Rhipidura rufifrons", "f": [0.1, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0833333, 0.1111111, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0769231, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Fantails, flycatchers & magpie-lark", "sz": "tiny", "col": ["orange", "black", "white"]}, {"c": "Grey Fantail", "s": "Rhipidura albiscapa", "f": [0.5, 0.7142857, 0.6666667, 0.6666667, 1.0, 0.7142857, 0.5833333, 0.6666667, 0.7, 0.9285714, 0.75, 0.6875, 0.75, 0.8, 0.5, 0.4285714, 0.1666667, 0.1666667, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.2222222, 0.6428571, 0.875, 0.875, 1.0, 1.0, 0.8571429, 0.5714286, 0.8571429, 0.4615385, 0.8571429, 0.375, 0.75, 0.6, 0.5, 0.75, 0.5, 0.2857143], "fam": "Fantails, flycatchers & magpie-lark", "sz": "small", "col": ["grey", "white"]}, {"c": "Magpie-lark", "s": "Grallina cyanoleuca", "f": [0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2857143], "fam": "Fantails, flycatchers & magpie-lark", "sz": "medium", "col": ["black", "white"]}, {"c": "Leaden Flycatcher", "s": "Myiagra rubecula", "f": [0.4, 0.4285714, 0.6666667, 0.2777778, 0.4285714, 0.0, 0.1666667, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2857143, 0.1428571, 0.2857143, 0.2307692, 0.4285714, 0.125, 0.25, 0.4, 0.75, 0.5, 0.5, 0.1428571], "fam": "Fantails, flycatchers & magpie-lark", "sz": "small", "col": ["grey", "white"], "flk": "53252329278"}, {"c": "Satin Flycatcher", "s": "Myiagra cyanoleuca", "f": [0.1, 0.2857143, 0.1111111, 0.0555556, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1538462, 0.0, 0.25, 0.0, 0.0, 0.0, 0.25, 0.0, 0.1428571], "fam": "Fantails, flycatchers & magpie-lark", "sz": "small", "col": ["blue", "black", "white"], "flk": "50749333108"}, {"c": "Leaden/Satin Flycatcher", "s": "Myiagra rubecula/cyanoleuca", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0], "fam": "Fantails, flycatchers & magpie-lark", "sz": "small", "col": ["grey", "black", "white"]}, {"c": "White-winged Chough", "s": "Corcorax melanorhamphos", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Chough", "sz": "large", "col": ["black", "red"]}, {"c": "Australian Raven", "s": "Corvus coronoides", "f": [0.1, 0.0, 0.2222222, 0.0555556, 0.0, 0.1428571, 0.0833333, 0.2222222, 0.4, 0.3571429, 0.25, 0.375, 0.1666667, 0.0, 0.25, 0.3571429, 0.1666667, 0.8333333, 0.1, 0.1818182, 0.2, 0.5, 0.2, 0.1666667, 0.375, 0.2, 0.375, 0.2352941, 0.0, 0.2, 0.1111111, 0.4285714, 0.25, 0.0, 0.4444444, 0.0, 0.1428571, 0.2857143, 0.5714286, 0.1538462, 0.4285714, 0.375, 0.25, 0.0, 0.0, 0.25, 0.25, 0.0], "fam": "Ravens", "sz": "large", "col": ["black"]}, {"c": "raven sp.", "s": "Corvus sp. (raven sp.)", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Ravens", "sz": "large", "col": ["black"]}, {"c": "Rose Robin", "s": "Petroica rosea", "f": [0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1176471, 0.0, 0.0, 0.1111111, 0.0, 0.125, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Robins", "sz": "tiny", "col": ["pink", "grey"]}, {"c": "Flame Robin", "s": "Petroica phoenicea", "f": [0.0, 0.0, 0.0, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Robins", "sz": "small", "col": ["orange", "red", "grey", "black"]}, {"c": "Scarlet Robin", "s": "Petroica boodang", "f": [0.0, 0.0, 0.1111111, 0.1111111, 0.0, 0.0, 0.0, 0.1111111, 0.0, 0.0, 0.25, 0.0625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.2222222, 0.0, 0.125, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Robins", "sz": "small", "col": ["red", "black", "white"], "flk": "50869704307"}, {"c": "Eastern Yellow Robin", "s": "Eopsaltria australis", "f": [0.3, 0.4285714, 0.8888889, 0.5, 0.7142857, 0.7142857, 0.5, 0.4444444, 0.5, 0.7142857, 0.5, 0.5625, 0.75, 0.5, 0.625, 0.6428571, 0.8333333, 0.5, 0.7, 0.3636364, 0.6, 0.75, 0.7, 0.8333333, 0.875, 0.8, 0.75, 0.5882353, 0.4, 0.7, 0.6666667, 0.9285714, 0.75, 0.125, 0.6666667, 0.75, 0.8571429, 0.4285714, 0.1428571, 0.6153846, 0.5714286, 0.75, 0.25, 0.8, 0.5, 0.75, 0.75, 0.4285714], "fam": "Robins", "sz": "small", "col": ["yellow", "grey"], "flk": "55542909891"}, {"c": "Welcome Swallow", "s": "Hirundo neoxena", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Swallows & martins", "sz": "small", "col": ["blue", "orange", "white"]}, {"c": "Tree Martin", "s": "Petrochelidon nigricans", "f": [0.0, 0.1428571, 0.1111111, 0.0555556, 0.0, 0.0, 0.0833333, 0.0, 0.1, 0.0, 0.0, 0.0625, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1111111, 0.0714286, 0.0, 0.25, 0.0, 0.0, 0.0, 0.1428571, 0.1428571, 0.1538462, 0.1428571, 0.0, 0.0, 0.4, 0.75, 0.25, 0.0, 0.1428571], "fam": "Swallows & martins", "sz": "small", "col": ["blue", "white"]}, {"c": "Fairy/Tree Martin", "s": "Petrochelidon ariel/nigricans", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Swallows & martins", "sz": "small", "col": ["blue", "white"]}, {"c": "Silvereye", "s": "Zosterops lateralis", "f": [0.1, 0.0, 0.1111111, 0.0555556, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2142857, 0.1666667, 0.1666667, 0.1, 0.0909091, 0.2, 0.0, 0.3, 0.0, 0.0, 0.0, 0.25, 0.1176471, 0.0, 0.2, 0.0, 0.0, 0.125, 0.0, 0.0, 0.125, 0.1428571, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Silvereyes", "sz": "tiny", "col": ["green", "grey", "white"]}, {"c": "Common Myna", "s": "Acridotheres tristis", "f": [0.2, 0.1428571, 0.0, 0.0, 0.1428571, 0.1428571, 0.0, 0.1111111, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.1176471, 0.2, 0.2, 0.2222222, 0.0, 0.125, 0.0, 0.0, 0.125, 0.0, 0.0, 0.1428571, 0.1538462, 0.0, 0.0, 0.5, 0.4, 0.25, 0.25, 0.0, 0.1428571], "fam": "Introduced species", "sz": "medium", "col": ["brown", "black", "yellow"]}, {"c": "Bassian Thrush", "s": "Zoothera lunulata", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0714286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571], "fam": "Thrushes", "sz": "medium", "col": ["brown", "black"]}, {"c": "Mistletoebird", "s": "Dicaeum hirundinaceum", "f": [0.0, 0.0, 0.1111111, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0588235, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "fam": "Finches & mistletoebird", "sz": "tiny", "col": ["red", "black"]}, {"c": "Beautiful Firetail", "s": "Stagonopleura bella", "f": [0.1, 0.2857143, 0.2222222, 0.1666667, 0.4285714, 0.4285714, 0.25, 0.2222222, 0.1, 0.4285714, 0.25, 0.125, 0.25, 0.2, 0.125, 0.1428571, 0.1666667, 0.1666667, 0.1, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571, 0.0, 0.0, 0.1111111, 0.0, 0.1428571, 0.1428571, 0.0, 0.0769231, 0.1428571, 0.0, 0.0, 0.0, 0.25, 0.25, 0.0, 0.0], "fam": "Finches & mistletoebird", "sz": "small", "col": ["red", "brown", "black"], "flk": "55086171463"}, {"c": "Red-browed Finch", "s": "Neochmia temporalis", "f": [0.2, 0.1428571, 0.2222222, 0.3333333, 0.2857143, 0.5714286, 0.25, 0.3333333, 0.1, 0.2142857, 0.25, 0.125, 0.0833333, 0.0, 0.0, 0.0, 0.0, 0.1666667, 0.1, 0.0, 0.0, 0.25, 0.1, 0.0, 0.125, 0.0, 0.0, 0.0588235, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0769231, 0.1428571, 0.25, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0], "fam": "Finches & mistletoebird", "sz": "small", "col": ["red", "grey"]}, {"c": "House Sparrow", "s": "Passer domesticus", "f": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1428571], "fam": "Introduced species", "sz": "small", "col": ["brown", "grey"]}]}</script>
+<script>
+(function () {
+  const DATA = JSON.parse(document.getElementById('bird-data').textContent);
+  const SPECIES = DATA.species;
+  const SAMPLES = DATA.sampleSizes;
+  const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const MONTH_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  const main = document.getElementById('main');
+
+  // ---- Flickr photo integration -------------------------------------
+  // Paste your free Flickr API key below (get one in ~2 minutes at
+  // flickr.com/services/apps/create -> "Apply for a non-commercial key").
+  // The app works fine with no key too, it just won't show photos.
+  const FLICKR_API_KEY = '4e3991f37b171143f6c9b1b8da41529f';
+  const FLICKR_USER_URL = 'https://www.flickr.com/photos/katiecordes/';
+  const FLICKR_PHOTOSET_ID = '72157720146899842';
+  const FLICKR_ALBUM_URL = FLICKR_USER_URL + 'albums/' + FLICKR_PHOTOSET_ID + '/';
+
+  // A photo's title only matches a species if it normalises to an exact
+  // name, this alias map covers older/alternate common names used in
+  // some of your photo titles that don't match the current eBird name.
+  const FLICKR_TITLE_ALIASES = {
+    'crestedshriketit': 'Eastern Shrike-tit'
+  };
+
+  function normaliseName(s) {
+    return s.toLowerCase().replace(/[^a-z]/g, '');
+  }
+
+  const SPECIES_BY_NORMALISED_NAME = {};
+  SPECIES.forEach(sp => { SPECIES_BY_NORMALISED_NAME[normaliseName(sp.c)] = sp; });
+
+  const PHOTOS = {}; // common name -> array of {id, title, thumb, medium}
+  let photosLoaded = false;
+
+  function flickrJSONP(url, onData, onError, timeoutMs) {
+    const cbName = 'flickrCb_' + Math.random().toString(36).slice(2);
+    const script = document.createElement('script');
+    let done = false;
+    const cleanup = () => { delete window[cbName]; script.remove(); };
+    const timer = setTimeout(() => {
+      if (done) return;
+      done = true;
+      cleanup();
+      onError && onError('timeout');
+    }, timeoutMs || 8000);
+    window[cbName] = function (data) {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      cleanup();
+      onData(data);
+    };
+    script.onerror = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      cleanup();
+      onError && onError('script-error');
+    };
+    script.src = url + (url.includes('?') ? '&' : '?') + 'jsoncallback=' + cbName;
+    document.body.appendChild(script);
+  }
+
+  function matchPhotoTitleToSpecies(title) {
+    const prefix = (title.match(/^[A-Za-z\-\s']+/) || [''])[0].trim();
+    const norm = normaliseName(prefix);
+    if (!norm) return null;
+    const aliased = FLICKR_TITLE_ALIASES[norm];
+    if (aliased) {
+      return SPECIES.find(sp => sp.c === aliased) || null;
+    }
+    return SPECIES_BY_NORMALISED_NAME[norm] || null;
+  }
+
+  function loadFlickrPhotos() {
+    if (!FLICKR_API_KEY || FLICKR_API_KEY === 'YOUR_FLICKR_API_KEY_HERE') return;
+
+    const lookupUrl = 'https://api.flickr.com/services/rest/?method=flickr.urls.lookupUser'
+      + '&api_key=' + encodeURIComponent(FLICKR_API_KEY)
+      + '&url=' + encodeURIComponent(FLICKR_USER_URL)
+      + '&format=json';
+
+    flickrJSONP(lookupUrl, (lookupData) => {
+      const nsid = lookupData && lookupData.user && lookupData.user.id;
+      if (!nsid) return;
+
+      const photosUrl = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos'
+        + '&api_key=' + encodeURIComponent(FLICKR_API_KEY)
+        + '&photoset_id=' + FLICKR_PHOTOSET_ID
+        + '&user_id=' + encodeURIComponent(nsid)
+        + '&extras=url_q,url_m,owner_name'
+        + '&per_page=500'
+        + '&format=json';
+
+      flickrJSONP(photosUrl, (photosData) => {
+        const list = (photosData && photosData.photoset && photosData.photoset.photo) || [];
+        list.forEach(p => {
+          // Belt-and-braces: only accept photos actually owned by this account,
+          // even though photoset_id should already scope to just this album.
+          if (p.owner && p.owner !== nsid) return;
+          const sp = matchPhotoTitleToSpecies(p.title || '');
+          if (!sp || !p.url_q) return;
+          if (!PHOTOS[sp.c]) PHOTOS[sp.c] = [];
+          PHOTOS[sp.c].push({ id: p.id, title: p.title, thumb: p.url_q, medium: p.url_m || p.url_q });
+        });
+        photosLoaded = true;
+        navigate(currentView.type, currentView.payload, true); // re-render with photos now in, no scroll jump
+      }, () => {});
+    }, () => {});
+  }
+  // ---------------------------------------------------------------------
+
+  function weekIndexForDate(date) {
+    const month = date.getMonth(); // 0-11
+    const day = date.getDate();
+    let wk;
+    if (day <= 7) wk = 0;
+    else if (day <= 15) wk = 1;
+    else if (day <= 23) wk = 2;
+    else wk = 3;
+    return month * 4 + wk;
+  }
+
+  function weekIndexNow() {
+    return weekIndexForDate(new Date());
+  }
+
+  function todayISO() {
+    const d = new Date();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + day;
+  }
+
+  function parseISODateLocal(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function freqLabel(f) {
+    if (f <= 0) return "Not recorded";
+    if (f < 0.03) return "Rare";
+    if (f < 0.1) return "Uncommon";
+    if (f < 0.3) return "Occasional";
+    if (f < 0.6) return "Fairly common";
+    return "Common";
+  }
+
+  const FREQ_DEFS = {
+    "Common": "Reported on 60%+ of checklists that week. Expect to see or hear it on most visits.",
+    "Fairly common": "Reported on 30\u201360% of checklists. Good odds, but not guaranteed.",
+    "Occasional": "Reported on 10\u201330% of checklists. You might get lucky.",
+    "Uncommon": "Reported on 3\u201310% of checklists. A nice find if you do.",
+    "Rare": "Reported on under 3% of checklists. Genuinely unusual for this reserve.",
+    "Not recorded": "No local records for this week yet. Could still be present, just hasn't been logged."
+  };
+
+  function freqTooltip(f) {
+    return FREQ_DEFS[freqLabel(f)] || "";
+  }
+
+  function monthAvg(species, monthIdx) {
+    const start = monthIdx * 4;
+    const vals = species.f.slice(start, start + 4);
+    return vals.reduce((a,b) => a+b, 0) / vals.length;
+  }
+
+  function peakWeek(species) {
+    let best = 0, bi = 0;
+    species.f.forEach((v,i) => { if (v > best) { best = v; bi = i; } });
+    return { value: best, index: bi };
+  }
+
+  function weekToMonthLabel(i) {
+    const m = Math.floor(i/4);
+    const wk = (i%4)+1;
+    return MONTH_NAMES[m] + " (week " + wk + " of 4)";
+  }
+
+  // Australian seasons (opposite of the Northern Hemisphere convention).
+  const SEASONS = {
+    summer: { label: 'Summer', months: [11, 0, 1], range: 'Dec–Feb' },
+    autumn: { label: 'Autumn', months: [2, 3, 4], range: 'Mar–May' },
+    winter: { label: 'Winter', months: [5, 6, 7], range: 'Jun–Aug' },
+    spring: { label: 'Spring', months: [8, 9, 10], range: 'Sep–Nov' }
+  };
+  const SEASON_ORDER = ['summer', 'autumn', 'winter', 'spring'];
+
+  function seasonForMonth(m) {
+    return SEASON_ORDER.find(key => SEASONS[key].months.includes(m));
+  }
+
+  function currentSeasonKey() {
+    return seasonForMonth(new Date().getMonth());
+  }
+
+  function seasonAvg(species, seasonKey) {
+    const months = SEASONS[seasonKey].months;
+    const vals = months.map(m => monthAvg(species, m));
+    return vals.reduce((a,b) => a+b, 0) / vals.length;
+  }
+
+  function findSeasonByText(lower) {
+    if (/\bspring\b/.test(lower)) return 'spring';
+    if (/\bsummer\b/.test(lower)) return 'summer';
+    if (/\bautumn\b|\bfall\b/.test(lower)) return 'autumn';
+    if (/\bwinter\b/.test(lower)) return 'winter';
+    return null;
+  }
+
+  // Visual lookup: family, size and colour, for people who don't know a species name yet.
+  const FAMILY_ORDER = [
+    "Waterbirds","Pigeons & doves","Cuckoos","Frogmouths & owls","Swifts",
+    "Lapwings & waders","Buttonquail","Raptors","Kingfishers & rollers","Cockatoos",
+    "Parrots & lorikeets","Lyrebird","Bowerbirds","Treecreepers","Fairywrens",
+    "Honeyeaters","Pardalotes","Scrubwrens & allies","Thornbills & gerygones","Cuckooshrikes",
+    "Sittellas","Whipbirds & allies","Whistlers & allies","Orioles",
+    "Butcherbirds, magpies, currawongs & woodswallows","Fantails, flycatchers & magpie-lark",
+    "Chough","Ravens","Robins","Swallows & martins","Silvereyes","Thrushes",
+    "Finches & mistletoebird","Introduced species"
+  ];
+
+  const COLOUR_WORDS = ["red","orange","yellow","green","blue","pink","black","white","grey","brown"];
+
+  function findColoursByText(lower) {
+    const found = [];
+    COLOUR_WORDS.forEach(c => {
+      const re = c === "grey" ? /\bgreys?\b|\bgrays?\b/ : new RegExp('\\b' + c + 's?\\b');
+      if (re.test(lower)) found.push(c);
+    });
+    return found;
+  }
+
+  function findSizesByText(lower) {
+    const found = [];
+    if (/\btiny\b/.test(lower)) found.push('tiny');
+    if (/\bsmall\b/.test(lower)) found.push('small');
+    if (/\bmedium\b/.test(lower)) found.push('medium');
+    if (/\bvery large\b|\bhuge\b|\bmassive\b/.test(lower)) found.push('very large');
+    else if (/\blarge\b/.test(lower)) found.push('large');
+    return found;
+  }
+
+  // Order matters: more specific patterns (e.g. magpie-lark) are checked
+  // before broader ones (e.g. magpie) that would otherwise swallow them.
+  const FAMILY_KEYWORDS = [
+    [/\bfantails?\b|\bflycatchers?\b|\bmagpie-?larks?\b/, "Fantails, flycatchers & magpie-lark"],
+    [/\bhoneyeaters?\b/, "Honeyeaters"],
+    [/\bparrots?\b|\blorikeets?\b/, "Parrots & lorikeets"],
+    [/\bcockatoos?\b/, "Cockatoos"],
+    [/\braptors?\b|\bbirds? of prey\b/, "Raptors"],
+    [/\brobins?\b/, "Robins"],
+    [/\bducks?\b|\bwaterbirds?\b|\bherons?\b|\bpelicans?\b|\bgrebes?\b|\bdarters?\b/, "Waterbirds"],
+    [/\bfinches?\b|\bmistletoebirds?\b/, "Finches & mistletoebird"],
+    [/\bfairywrens?\b|\bwrens?\b/, "Fairywrens"],
+    [/\bthornbills?\b|\bgerygones?\b/, "Thornbills & gerygones"],
+    [/\bpigeons?\b|\bdoves?\b/, "Pigeons & doves"],
+    [/\bcuckooshrikes?\b/, "Cuckooshrikes"],
+    [/\bcuckoos?\b/, "Cuckoos"],
+    [/\bowls?\b|\bfrogmouths?\b/, "Frogmouths & owls"],
+    [/\bkingfishers?\b|\brollers?\b/, "Kingfishers & rollers"],
+    [/\bcurrawongs?\b|\bmagpies?\b|\bbutcherbirds?\b|\bwoodswallows?\b/, "Butcherbirds, magpies, currawongs & woodswallows"],
+    [/\bravens?\b|\bcrows?\b/, "Ravens"],
+    [/\bswallows?\b|\bmartins?\b/, "Swallows & martins"],
+    [/\btreecreepers?\b/, "Treecreepers"],
+    [/\bpardalotes?\b/, "Pardalotes"],
+    [/\bscrubwrens?\b/, "Scrubwrens & allies"],
+    [/\bwhistlers?\b|\bshrike-?tits?\b|\bshrikethrush(es)?\b/, "Whistlers & allies"],
+    [/\blyrebirds?\b/, "Lyrebird"],
+    [/\bbowerbirds?\b/, "Bowerbirds"],
+    [/\borioles?\b/, "Orioles"],
+    [/\bsittellas?\b/, "Sittellas"],
+    [/\bchoughs?\b/, "Chough"],
+    [/\bsilvereyes?\b/, "Silvereyes"],
+    [/\bthrush(es)?\b/, "Thrushes"],
+    [/\bsparrows?\b|\bmynas?\b/, "Introduced species"],
+    [/\blapwings?\b|\bwaders?\b|\bplovers?\b/, "Lapwings & waders"],
+    [/\bbuttonquails?\b/, "Buttonquail"],
+    [/\bwhipbirds?\b/, "Whipbirds & allies"],
+    [/\bswifts?\b/, "Swifts"]
+  ];
+
+  function findFamilyByText(lower) {
+    for (const [re, fam] of FAMILY_KEYWORDS) {
+      if (re.test(lower)) return fam;
+    }
+    return null;
+  }
+
+  const state = { rarity: null };
+  let lastListView = { type: 'month', payload: new Date().getMonth() };
+  let currentView = { type: 'month', payload: new Date().getMonth() };
+
+  function navigate(view, payload, skipScroll) {
+    currentView = { type: view, payload: payload };
+    if (view === 'month') renderMonth(payload);
+    else if (view === 'season') renderSeason(payload);
+    else if (view === 'walk') renderWalk(payload);
+    else if (view === 'walkPrompt') renderWalkPrompt();
+    else if (view === 'visual') renderVisual(payload);
+    else if (view === 'species') renderSpecies(payload);
+    else if (view === 'all') renderAll();
+    if (!skipScroll) window.scrollTo({top: main.offsetTop - 20, behavior: 'smooth'});
+  }
+
+  function speciesRow(sp, freqForDisplay, note) {
+    const pct = Math.round(freqForDisplay * 100);
+    const tip = freqTooltip(freqForDisplay).replace(/"/g, '&quot;');
+    const photo = PHOTOS[sp.c] && PHOTOS[sp.c][0];
+    const row = document.createElement('a');
+    row.href = 'javascript:void(0)';
+    row.className = 'species-row' + (photo ? ' has-thumb' : '');
+    row.tabIndex = 0;
+    row.innerHTML =
+      (photo ? '<img class="row-thumb" src="' + photo.thumb + '" alt="" loading="lazy">' : '') +
+      '<div class="names">' +
+        '<div class="common">' + sp.c + '</div>' +
+        '<div class="sci">' + sp.s + '</div>' +
+        (note ? '<div class="note">' + note + '</div>' : '') +
+      '</div>' +
+      '<div class="freq-cell" title="' + tip + '">' +
+        '<span class="freq-label">' + freqLabel(freqForDisplay) + '</span>' +
+        '<span class="freq-track"><span class="freq-fill" style="width:' + Math.max(pct,3) + '%"></span></span>' +
+      '</div>';
+    row.addEventListener('click', () => navigate('species', sp));
+    row.addEventListener('keydown', (e) => { if (e.key === 'Enter') navigate('species', sp); });
+    return row;
+  }
+
+  function renderWalkPrompt() {
+    let html = '<div class="view-heading"><h2>I&rsquo;m on a walk</h2></div>';
+    html += '<p class="view-sub">What date are you walking? We&rsquo;ll list what to look and listen out for that week.</p>';
+    html += '<form class="walk-form" id="walkForm">';
+    html += '<input type="date" id="walkDate" value="' + todayISO() + '">';
+    html += '<button type="submit">Show me</button>';
+    html += '</form>';
+    main.innerHTML = html;
+    document.getElementById('walkForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = document.getElementById('walkDate').value;
+      if (!val) return;
+      navigate('walk', val);
+    });
+  }
+
+  function renderWalk(dateStr) {
+    lastListView = { type: 'walk', payload: dateStr };
+    const date = parseISODateLocal(dateStr);
+    const weekIdx = weekIndexForDate(date);
+    const monthIdx = Math.floor(weekIdx / 4);
+    const dateLabel = date.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    let html = '<div class="view-heading"><h2>Birds to look out for</h2></div>';
+    html += '<p class="view-sub">Walking on <b>' + dateLabel + '</b> , ranked by how often each species is reported in this week of ' + MONTH_NAMES[monthIdx] + '. <button type="button" class="chip" id="changeDateBtn">Change date</button></p>';
+    html += '<div id="rows"></div>';
+    main.innerHTML = html;
+    document.getElementById('changeDateBtn').addEventListener('click', () => navigate('walkPrompt'));
+
+    const ranked = SPECIES
+      .map(sp => ({ sp, freq: sp.f[weekIdx] }))
+      .filter(x => x.freq > 0)
+      .sort((a,b) => b.freq - a.freq);
+
+    const rowsEl = document.getElementById('rows');
+    if (ranked.length === 0) {
+      rowsEl.innerHTML = '<p class="empty-note">No species recorded for this week yet.</p>';
+      return;
+    }
+    ranked.forEach(x => rowsEl.appendChild(speciesRow(x.sp, x.freq)));
+  }
+
+  function renderMonth(monthIdx) {
+    lastListView = { type: 'month', payload: monthIdx };
+    const isCurrent = monthIdx === new Date().getMonth();
+    const rarity = state.rarity;
+    let html = '';
+    html += tabsHtml(monthIdx);
+
+    if (rarity) {
+      html += '<div class="view-heading"><h2>' + rarity.label + ' in ' + MONTH_NAMES[monthIdx] + '</h2></div>';
+      html += '<p class="view-sub">Species reported on roughly ' + Math.round(rarity.min*100) + '&ndash;' + Math.round(Math.min(rarity.max,1)*100) + '% of checklists that month. <button type="button" class="chip" id="clearFilterBtn">Clear filter</button></p>';
+    } else {
+      html += '<div class="view-heading"><h2>' + MONTH_NAMES[monthIdx] + '</h2></div>';
+      html += '<p class="view-sub">' + (isCurrent ? "This month, " : "In " + MONTH_NAMES[monthIdx] + ", ") + 'ranked by how often each species turns up on checklists at this reserve. <button type="button" class="chip" id="toSeasonView">View by season</button></p>';
+    }
+    html += '<div id="rows"></div>';
+    main.innerHTML = html;
+
+    attachTabHandlers();
+    if (rarity) {
+      document.getElementById('clearFilterBtn').addEventListener('click', () => {
+        state.rarity = null;
+        navigate('month', monthIdx);
+      });
+    } else {
+      document.getElementById('toSeasonView').addEventListener('click', () => navigate('season', seasonForMonth(monthIdx)));
+    }
+
+    let ranked = SPECIES.map(sp => ({ sp, freq: monthAvg(sp, monthIdx) }));
+    ranked = rarity
+      ? ranked.filter(x => x.freq >= rarity.min && x.freq < rarity.max)
+      : ranked.filter(x => x.freq > 0);
+    ranked.sort((a,b) => b.freq - a.freq);
+
+    const rowsEl = document.getElementById('rows');
+    if (ranked.length === 0) {
+      rowsEl.innerHTML = '<p class="empty-note">No species match' + (rarity ? ' this filter' : '') + ' for this month yet.</p>';
+      return;
+    }
+    ranked.forEach(x => rowsEl.appendChild(speciesRow(x.sp, x.freq)));
+  }
+
+  function tabsHtml(activeMonth) {
+    const curMonth = new Date().getMonth();
+    let html = '<div class="month-tabs">';
+    MONTH_SHORT.forEach((m,i) => {
+      const cls = ['month-tab'];
+      if (i === activeMonth) cls.push('active');
+      if (i === curMonth) cls.push('is-current');
+      html += '<button class="' + cls.join(' ') + '" data-month="' + i + '">' + m + '</button>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function attachTabHandlers() {
+    document.querySelectorAll('.month-tab[data-month]').forEach(btn => {
+      btn.addEventListener('click', () => navigate('month', parseInt(btn.dataset.month, 10)));
+    });
+  }
+
+  function seasonTabsHtml(activeSeason) {
+    const curSeason = currentSeasonKey();
+    let html = '<div class="month-tabs">';
+    SEASON_ORDER.forEach(key => {
+      const cls = ['month-tab'];
+      if (key === activeSeason) cls.push('active');
+      if (key === curSeason) cls.push('is-current');
+      html += '<button class="' + cls.join(' ') + '" data-season="' + key + '">' + SEASONS[key].label + '</button>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function attachSeasonTabHandlers() {
+    document.querySelectorAll('.month-tab[data-season]').forEach(btn => {
+      btn.addEventListener('click', () => navigate('season', btn.dataset.season));
+    });
+  }
+
+  function renderSeason(seasonKey) {
+    lastListView = { type: 'season', payload: seasonKey };
+    const season = SEASONS[seasonKey];
+    const isCurrent = seasonKey === currentSeasonKey();
+    const rarity = state.rarity;
+    let html = '';
+    html += seasonTabsHtml(seasonKey);
+
+    if (rarity) {
+      html += '<div class="view-heading"><h2>' + rarity.label + ' in ' + season.label + '</h2></div>';
+      html += '<p class="view-sub">' + season.range + ' (Australian ' + season.label.toLowerCase() + '). Species reported on roughly ' + Math.round(rarity.min*100) + '&ndash;' + Math.round(Math.min(rarity.max,1)*100) + '% of checklists across these months. <button type="button" class="chip" id="clearFilterBtn">Clear filter</button></p>';
+    } else {
+      html += '<div class="view-heading"><h2>' + season.label + '</h2></div>';
+      html += '<p class="view-sub">' + (isCurrent ? "Right now, " : "") + season.range + ' in the Australian calendar, ranked by how often each species turns up on checklists across these three months. <button type="button" class="chip" id="toMonthView">View by month</button></p>';
+    }
+    html += '<div id="rows"></div>';
+    main.innerHTML = html;
+
+    attachSeasonTabHandlers();
+    if (rarity) {
+      document.getElementById('clearFilterBtn').addEventListener('click', () => {
+        state.rarity = null;
+        navigate('season', seasonKey);
+      });
+    } else {
+      document.getElementById('toMonthView').addEventListener('click', () => {
+        navigate('month', isCurrent ? new Date().getMonth() : season.months[0]);
+      });
+    }
+
+    let ranked = SPECIES.map(sp => ({ sp, freq: seasonAvg(sp, seasonKey) }));
+    ranked = rarity
+      ? ranked.filter(x => x.freq >= rarity.min && x.freq < rarity.max)
+      : ranked.filter(x => x.freq > 0);
+    ranked.sort((a,b) => b.freq - a.freq);
+
+    const rowsEl = document.getElementById('rows');
+    if (ranked.length === 0) {
+      rowsEl.innerHTML = '<p class="empty-note">No species match' + (rarity ? ' this filter' : '') + ' for this season yet.</p>';
+      return;
+    }
+    ranked.forEach(x => rowsEl.appendChild(speciesRow(x.sp, x.freq)));
+  }
+
+  function capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function describeVisualFilters(filters) {
+    const parts = [];
+    if (filters.sizes.length) parts.push(filters.sizes.map(capitalize).join('/'));
+    if (filters.colours.length) parts.push(filters.colours.map(capitalize).join('/'));
+    let phrase = parts.length ? parts.join(', ') + ' birds' : 'Birds';
+    if (filters.family) phrase += ': ' + filters.family;
+    return phrase;
+  }
+
+  function renderVisual(filters) {
+    lastListView = { type: 'visual', payload: filters };
+    const heading = describeVisualFilters(filters);
+
+    let html = '<div class="view-heading"><h2>' + heading + '</h2></div>';
+    html += '<p class="view-sub">Matches ranked by how often each is reported, with the month it&rsquo;s most likely. <button type="button" class="chip" id="clearVisualBtn">Clear filters</button></p>';
+    html += '<div id="rows"></div>';
+    main.innerHTML = html;
+    document.getElementById('clearVisualBtn').addEventListener('click', () => navigate('all'));
+
+    let ranked = SPECIES
+      .filter(sp => sp.fam)
+      .map(sp => {
+        const pk = peakWeek(sp);
+        return { sp, freq: pk.value, peakIdx: pk.index };
+      });
+
+    if (filters.colours.length) {
+      ranked = ranked.filter(x => filters.colours.some(c => x.sp.col.includes(c)));
+    }
+    if (filters.sizes.length) {
+      ranked = ranked.filter(x => filters.sizes.includes(x.sp.sz));
+    }
+    if (filters.family) {
+      ranked = ranked.filter(x => x.sp.fam === filters.family);
+    }
+    ranked.sort((a,b) => b.freq - a.freq);
+
+    const rowsEl = document.getElementById('rows');
+    if (ranked.length === 0) {
+      rowsEl.innerHTML = '<p class="empty-note">No species at this reserve match that combination. Try dropping one filter.</p>';
+      return;
+    }
+    ranked.forEach(x => {
+      const note = x.freq > 0 ? 'Most common in ' + MONTH_NAMES[Math.floor(x.peakIdx / 4)] : null;
+      rowsEl.appendChild(speciesRow(x.sp, x.freq, note));
+    });
+  }
+
+  function renderAll() {
+    lastListView = { type: 'all', payload: null };
+    let html = '<div class="view-heading"><h2>All species</h2></div>';
+    html += '<p class="view-sub">Every species recorded at the reserve, alphabetical. Tap one for its full-year pattern.</p>';
+    html += '<div id="rows"></div>';
+    main.innerHTML = html;
+    const rowsEl = document.getElementById('rows');
+    const sorted = [...SPECIES].sort((a,b) => a.c.localeCompare(b.c));
+    sorted.forEach(sp => {
+      const pk = peakWeek(sp);
+      rowsEl.appendChild(speciesRow(sp, pk.value));
+    });
+  }
+
+  function xenoCantoUrl(sp) {
+    const s = sp.s;
+    // Messy/composite scientific names (hybrids, "sp." placeholders) don't
+    // have a clean species page, so fall back to a free-text search instead.
+    if (/\/|sp\.|\(/.test(s)) {
+      return 'https://xeno-canto.org/explore?query=' + encodeURIComponent(sp.c);
+    }
+    const parts = s.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return 'https://xeno-canto.org/species/' + parts[0] + '-' + parts[1];
+    }
+    return 'https://xeno-canto.org/explore?query=' + encodeURIComponent(s);
+  }
+
+  function renderSpecies(sp) {
+    const curWeek = weekIndexNow();
+    const pk = peakWeek(sp);
+    const curFreq = sp.f[curWeek];
+    const photos = PHOTOS[sp.c] || [];
+
+    let html = '<div class="detail-nav">' +
+      '<button class="back-link" id="backBtn">&larr; Back</button>' +
+      '<button class="home-btn" id="homeBtn" aria-label="Back to today" title="Back to today">&#128038;</button>' +
+      '</div>';
+    html += '<div class="species-detail">';
+
+    if (photos.length) {
+      html += '<div class="photo-gallery">';
+      html += '<img class="photo-main" id="photoMain" src="' + photos[0].medium + '" alt="' + sp.c + '">';
+      if (photos.length > 1) {
+        html += '<div class="photo-strip">';
+        photos.forEach((p, i) => {
+          html += '<img class="photo-thumb' + (i === 0 ? ' active' : '') + '" data-full="' + p.medium + '" src="' + p.thumb + '" alt="">';
+        });
+        html += '</div>';
+      }
+      html += '<p class="photo-credit">Photo' + (photos.length > 1 ? 's' : '') + ' by Katie Cordes, from her <a href="' + FLICKR_ALBUM_URL + '" target="_blank" rel="noopener">Michael Eades Reserve album on Flickr &#8599;</a></p>';
+      html += '</div>';
+    }
+
+    html += '<h2>' + sp.c + '</h2>';
+    html += '<p class="sci-big">' + sp.s + '</p>';
+
+    let stat;
+    if (pk.value <= 0) {
+      stat = "Not enough records yet to show a seasonal pattern for this species here.";
+    } else {
+      stat = 'Most likely in <b>' + MONTH_NAMES[Math.floor(pk.index/4)] + '</b> (peaks around ' + Math.round(pk.value*100) + '% of checklists that week). ';
+      stat += 'Right now (' + weekToMonthLabel(curWeek).split(' (')[0] + '), it is reported on about <b>' + Math.round(curFreq*100) + '%</b> of checklists (' + freqLabel(curFreq).toLowerCase() + ').';
+    }
+    html += '<div class="headline-stat">' + stat + '</div>';
+
+    html += '<div class="sparkline">';
+    sp.f.forEach((v,i) => {
+      const h = Math.max(v * 100, v > 0 ? 4 : 2);
+      const cls = ['spark-bar'];
+      if (i === curWeek) cls.push('current-week');
+      if (v <= 0) cls.push('empty-bar');
+      html += '<div class="' + cls.join(' ') + '" style="height:' + h + '%" title="' + weekToMonthLabel(i) + ': ' + Math.round(v*100) + '%"></div>';
+    });
+    html += '</div>';
+    html += '<div class="month-labels">';
+    MONTH_SHORT.forEach(m => html += '<span>' + m + '</span>');
+    html += '</div>';
+
+    html += '<div class="legend">' +
+      '<span><span class="swatch" style="background:var(--gum)"></span>Weekly frequency</span>' +
+      '<span><span class="swatch" style="background:var(--sandstone)"></span>Current week</span>' +
+      '</div>';
+
+    html += '<div class="external-links">' +
+      '<a href="' + xenoCantoUrl(sp) + '" target="_blank" rel="noopener">Hear its call on Xeno-canto &#8599;</a>';
+    if (photos.length === 0 && sp.flk) {
+      html += '<br><a href="https://www.flickr.com/photos/katiecordes/' + sp.flk + '/in/album-' + FLICKR_PHOTOSET_ID + '" target="_blank" rel="noopener">See a photo of this bird on Flickr &#8599;</a>';
+    }
+    html += '</div>';
+
+    html += '</div>';
+    main.innerHTML = html;
+    document.getElementById('backBtn').addEventListener('click', () => navigate(lastListView.type, lastListView.payload));
+    document.getElementById('homeBtn').addEventListener('click', () => { state.rarity = null; navigate('month', new Date().getMonth()); });
+
+    if (photos.length > 1) {
+      const mainImg = document.getElementById('photoMain');
+      document.querySelectorAll('.photo-thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          mainImg.src = thumb.dataset.full;
+          document.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+      });
+    }
+  }
+
+  function findExactSpeciesMatch(text) {
+    const t = text.trim().toLowerCase();
+    if (!t) return null;
+    return SPECIES.find(sp => sp.c.toLowerCase() === t) || null;
+  }
+
+  function findSpeciesByText(text) {
+    const t = text.trim().toLowerCase();
+    if (!t) return null;
+    let match = SPECIES.find(sp => sp.c.toLowerCase() === t);
+    if (match) return match;
+    match = SPECIES.find(sp => sp.c.toLowerCase().includes(t));
+    if (match) return match;
+    match = SPECIES.find(sp => sp.s.toLowerCase().includes(t));
+    return match || null;
+  }
+
+  function findMonthByText(text) {
+    const t = text.trim().toLowerCase();
+    for (let i = 0; i < 12; i++) {
+      if (MONTH_NAMES[i].toLowerCase() === t || MONTH_NAMES[i].toLowerCase().startsWith(t) || MONTH_SHORT[i].toLowerCase() === t) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+  // "Rare" is treated as a colloquial band spanning both the Rare and
+  // Uncommon frequency bins, since that's how people actually ask.
+  function findRarityBand(lower) {
+    if (/\bfairly common\b/.test(lower)) return { min: 0.3, max: 0.6, label: 'Fairly common birds' };
+    if (/\brare\b/.test(lower)) return { min: 0.0001, max: 0.1, label: 'Uncommon to rare birds' };
+    if (/\buncommon\b/.test(lower)) return { min: 0.03, max: 0.1, label: 'Uncommon birds' };
+    if (/\bcommon\b/.test(lower)) return { min: 0.6, max: 1.01, label: 'Common birds' };
+    if (/\boccasional\b/.test(lower)) return { min: 0.1, max: 0.3, label: 'Occasional birds' };
+    return null;
+  }
+
+  document.getElementById('askForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = document.getElementById('askInput').value;
+    if (!val.trim()) return;
+
+    const lower = val.toLowerCase();
+    if (/\bnow\b|\bcurrent|\btoday\b|\bthis week\b/.test(lower)) {
+      state.rarity = null;
+      navigate('month', new Date().getMonth());
+      return;
+    }
+    if (/\bthis season\b/.test(lower)) {
+      state.rarity = null;
+      navigate('season', currentSeasonKey());
+      return;
+    }
+
+    // A full, exact species name always wins outright, before anything
+    // in that name (e.g. "Red" in "Red Wattlebird") gets read as a filter.
+    const exactSpecies = findExactSpeciesMatch(val);
+    if (exactSpecies) {
+      state.rarity = null;
+      navigate('species', exactSpecies);
+      return;
+    }
+
+    const seasonMatch = findSeasonByText(lower);
+    const monthMatch = seasonMatch ? null : (findMonthByText(val) !== null ? findMonthByText(val) :
+      (() => {
+        for (let i = 0; i < 12; i++) {
+          if (lower.includes(MONTH_NAMES[i].toLowerCase()) || lower.includes(MONTH_SHORT[i].toLowerCase())) return i;
+        }
+        return null;
+      })());
+
+    const rarityBand = findRarityBand(lower);
+    if (rarityBand) {
+      state.rarity = rarityBand;
+      if (seasonMatch) navigate('season', seasonMatch);
+      else navigate('month', monthMatch !== null ? monthMatch : new Date().getMonth());
+      return;
+    }
+
+    state.rarity = null;
+    if (seasonMatch) {
+      navigate('season', seasonMatch);
+      return;
+    }
+
+    // Visual lookup ("small red bird", "honeyeaters"), checked before the
+    // loose species-name matcher so a bare colour word doesn't get read as
+    // a partial match against whichever species happens to contain it.
+    const colours = findColoursByText(lower);
+    const sizes = findSizesByText(lower);
+    const family = findFamilyByText(lower);
+    if (colours.length || sizes.length || family) {
+      navigate('visual', { colours, sizes, family });
+      return;
+    }
+
+    const speciesMatch = findSpeciesByText(val);
+
+    if (speciesMatch && monthMatch === null) {
+      navigate('species', speciesMatch);
+    } else if (monthMatch !== null && !speciesMatch) {
+      navigate('month', monthMatch);
+    } else if (speciesMatch) {
+      navigate('species', speciesMatch);
+    } else if (monthMatch !== null) {
+      navigate('month', monthMatch);
+    } else {
+      navigate('all');
+    }
+  });
+
+  document.getElementById('chipWalk').addEventListener('click', () => { state.rarity = null; navigate('walkPrompt'); });
+  document.getElementById('chipNow').addEventListener('click', () => { state.rarity = null; navigate('month', new Date().getMonth()); });
+  document.getElementById('chipSeason').addEventListener('click', () => { state.rarity = null; navigate('season', currentSeasonKey()); });
+  document.getElementById('chipAll').addEventListener('click', () => { state.rarity = null; navigate('all'); });
+
+  // Visual filter panel setup
+  const familySelect = document.getElementById('familySelect');
+  const familyOption = document.createElement('option');
+  familyOption.value = '';
+  familyOption.textContent = 'Any family';
+  familySelect.appendChild(familyOption);
+  [...FAMILY_ORDER].sort().forEach(fam => {
+    const opt = document.createElement('option');
+    opt.value = fam;
+    opt.textContent = fam;
+    familySelect.appendChild(opt);
+  });
+
+  document.querySelectorAll('#colourChips .toggle-chip, #sizeChips .toggle-chip').forEach(btn => {
+    btn.addEventListener('click', () => btn.classList.toggle('active'));
+  });
+
+  document.getElementById('visualShowBtn').addEventListener('click', () => {
+    const colours = [...document.querySelectorAll('#colourChips .toggle-chip.active')].map(b => b.dataset.colour);
+    const sizes = [...document.querySelectorAll('#sizeChips .toggle-chip.active')].map(b => b.dataset.size);
+    const family = familySelect.value || null;
+    state.rarity = null;
+    navigate('visual', { colours, sizes, family });
+  });
+
+  document.getElementById('visualClearBtn').addEventListener('click', () => {
+    document.querySelectorAll('#visualPanel .toggle-chip.active').forEach(b => b.classList.remove('active'));
+    familySelect.value = '';
+  });
+
+  // initial view: current month
+  navigate('month', new Date().getMonth());
+  loadFlickrPhotos();
+})();
+</script>
+</body>
+</html>
