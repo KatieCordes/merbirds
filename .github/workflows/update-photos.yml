@@ -1,0 +1,36 @@
+name: Update bird photos from Flickr
+
+on:
+  schedule:
+    # Runs once a day at 3am UTC. Change the cron value to run more or
+    # less often (crontab.guru is handy for building the expression).
+    - cron: '0 3 * * *'
+  workflow_dispatch: {} # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-photos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch photos and match to species
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+        run: python scripts/update_flickr_photos.py
+
+      - name: Commit photos.json if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add photos.json
+          git diff --cached --quiet || git commit -m "Update bird photos from Flickr"
+          git push
