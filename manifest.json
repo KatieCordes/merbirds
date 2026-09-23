@@ -1,0 +1,16 @@
+{
+  "name": "Michael Eades Reserve: Bird Guide",
+  "short_name": "Bird Guide",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef2f1",
+  "theme_color": "#0b6d78",
+  "icons": [
+    {
+      "src": "./bird-mark.png",
+      "sizes": "540x540",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
