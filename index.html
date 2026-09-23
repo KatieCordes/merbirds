@@ -126,6 +126,32 @@
     text-align: right;
     padding-top: 2px;
   }
+  .share-save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .share-save-btn svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+  }
+  .share-save-btn:hover {
+    border-color: var(--gum);
+    color: var(--gum-deep);
+  }
   .walk-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -614,6 +640,14 @@
         <p>North Katoomba, Blue Mountains NSW. A local look at what to expect from the reserve's birdlife across the year, drawn from checklists submitted to eBird by local birders. 115 species recorded so far.</p>
       </div>
       <div class="walk-cta">
+        <button type="button" class="share-save-btn" id="shareSaveBtn" aria-label="Share or save this app">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 8l-6 4 6 4"></path>
+            <path d="M8 12h10"></path>
+            <path d="M18 4v16"></path>
+          </svg>
+          <span>Share or save</span>
+        </button>
         <button type="button" class="walk-cta-btn" id="chipWalk">I'm on a walk</button>
         <p class="walk-cta-desc">Tell us the date and we'll list what to look and listen out for.</p>
       </div>
@@ -714,6 +748,61 @@
   const MONTH_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   const main = document.getElementById('main');
+  const shareSaveBtn = document.getElementById('shareSaveBtn');
+  let installPrompt = null;
+
+  async function handleShareOrSave() {
+    const shareText = 'Check out the Michael Eades Reserve bird guide.';
+    const shareUrl = window.location.href;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: shareText,
+          url: shareUrl
+        });
+        return;
+      } catch (error) {
+        if (error && error.name === 'AbortError') return;
+      }
+    }
+
+    if (installPrompt) {
+      installPrompt.prompt();
+      try {
+        await installPrompt.userChoice;
+      } catch (error) {
+        // no-op: the browser will handle the prompt result
+      }
+      installPrompt = null;
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      const label = shareSaveBtn.querySelector('span');
+      if (label) {
+        label.textContent = 'Link copied';
+        setTimeout(() => { label.textContent = 'Share or save'; }, 1200);
+      }
+    } catch (error) {
+      window.prompt('Copy this link to share it:', shareUrl);
+    }
+  }
+
+  if (shareSaveBtn) {
+    shareSaveBtn.addEventListener('click', handleShareOrSave);
+  }
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    if (shareSaveBtn) {
+      const label = shareSaveBtn.querySelector('span');
+      if (label) label.textContent = 'Save to home screen';
+    }
+  });
 
   // ---- Photo integration ---------------------------------------------
   // Photos are matched to species by a scheduled GitHub Action (see
