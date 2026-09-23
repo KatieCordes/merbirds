@@ -142,6 +142,7 @@
     color: var(--ink-soft);
     cursor: pointer;
     white-space: nowrap;
+    margin: 0 0 12px auto;
   }
   .share-save-btn svg {
     width: 14px;
@@ -640,14 +641,6 @@
         <p>North Katoomba, Blue Mountains NSW. A local look at what to expect from the reserve's birdlife across the year, drawn from checklists submitted to eBird by local birders. 115 species recorded so far.</p>
       </div>
       <div class="walk-cta">
-        <button type="button" class="share-save-btn" id="shareSaveBtn" aria-label="Share or save this app">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 8l-6 4 6 4"></path>
-            <path d="M8 12h10"></path>
-            <path d="M18 4v16"></path>
-          </svg>
-          <span>Share or save</span>
-        </button>
         <button type="button" class="walk-cta-btn" id="chipWalk">I'm on a walk</button>
         <p class="walk-cta-desc">Tell us the date and we'll list what to look and listen out for.</p>
       </div>
@@ -723,6 +716,14 @@
   </details>
 
   <footer>
+    <button type="button" class="share-save-btn" id="shareSaveBtn" aria-label="Share or save this app" style="margin: 0 0 14px 0;">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 8l-6 4 6 4"></path>
+        <path d="M8 12h10"></path>
+        <path d="M18 4v16"></path>
+      </svg>
+      <span>Share or save</span>
+    </button>
     <p>Frequency shows the share of eBird checklists from this reserve that reported each species in that week of the year, not raw counts. A quiet week with few checklists submitted can look sparse even for common birds, so treat this as a guide, not a guarantee.</p>
     <p>Built from the <a href="https://ebird.org/hotspot/L5765385" target="_blank" rel="noopener">Michael Eades Reserve eBird hotspot</a> (L5765385) bar chart data. A pilot template: the same approach could power a guide for any reserve with enough eBird coverage.</p>
     <details class="who-eades">
