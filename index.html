@@ -153,6 +153,17 @@
     border-color: var(--gum);
     color: var(--gum-deep);
   }
+  .install-hint {
+    display: block;
+    margin: 0 0 14px 0;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
   .walk-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -726,6 +737,7 @@
       </svg>
       <span>Share or save this app</span>
     </button>
+    <div id="installHint" class="install-hint" hidden>On iPhone: tap Share, then Add to Home Screen. On Android: use the install prompt if available.</div>
     <p>Frequency shows the share of eBird checklists from this reserve that reported each species in that week of the year, not raw counts. A quiet week with few checklists submitted can look sparse even for common birds, so treat this as a guide, not a guarantee.</p>
     <p>Built from the <a href="https://ebird.org/hotspot/L5765385" target="_blank" rel="noopener">Michael Eades Reserve eBird hotspot</a> (L5765385) bar chart data. A pilot template: the same approach could power a guide for any reserve with enough eBird coverage.</p>
     <details class="who-eades">
@@ -752,11 +764,52 @@
 
   const main = document.getElementById('main');
   const shareSaveBtn = document.getElementById('shareSaveBtn');
+  const installHint = document.getElementById('installHint');
   let installPrompt = null;
+
+  function isIOSDevice() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+
+  function showInstallHint(text) {
+    if (!installHint) return;
+    installHint.hidden = false;
+    installHint.textContent = text;
+  }
 
   async function handleShareOrSave() {
     const shareText = 'Check out the Michael Eades Reserve bird guide.';
     const shareUrl = window.location.href;
+
+    if (installPrompt) {
+      installPrompt.prompt();
+      try {
+        await installPrompt.userChoice;
+      } catch (error) {
+        // no-op
+      }
+      installPrompt = null;
+      showInstallHint('Add this app to your home screen from the installation prompt.');
+      return;
+    }
+
+    if (isIOSDevice()) {
+      showInstallHint('On iPhone: tap Share, then Add to Home Screen.');
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: shareText,
+            url: shareUrl
+          });
+          return;
+        } catch (error) {
+          if (error && error.name === 'AbortError') return;
+        }
+      }
+      return;
+    }
 
     if (navigator.share) {
       try {
@@ -771,25 +824,16 @@
       }
     }
 
-    if (installPrompt) {
-      installPrompt.prompt();
-      try {
-        await installPrompt.userChoice;
-      } catch (error) {
-        // no-op: the browser will handle the prompt result
-      }
-      installPrompt = null;
-      return;
-    }
-
     try {
       await navigator.clipboard.writeText(shareUrl);
       const label = shareSaveBtn.querySelector('span');
       if (label) {
         label.textContent = 'Link copied';
-        setTimeout(() => { label.textContent = 'Share or save'; }, 1200);
+        setTimeout(() => { label.textContent = 'Share or save this app'; }, 1200);
       }
+      showInstallHint('Link copied. Paste it into a message or email to share it with friends.');
     } catch (error) {
+      showInstallHint('Copy this page URL from the address bar to share it with others.');
       window.prompt('Copy this link to share it:', shareUrl);
     }
   }
@@ -801,6 +845,7 @@
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     installPrompt = event;
+    showInstallHint('Android: tap to install this app on your home screen.');
     if (shareSaveBtn) {
       const label = shareSaveBtn.querySelector('span');
       if (label) label.textContent = 'Save to home screen';
