@@ -153,6 +153,30 @@
     border-color: var(--gum);
     color: var(--gum-deep);
   }
+  .top-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .top-share-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .top-share-btn:hover,
+  .top-share-btn:focus-visible {
+    border-color: var(--gum);
+    color: var(--gum-deep);
+  }
   .share-menu {
     display: grid;
     gap: 6px;
@@ -698,6 +722,16 @@
         <button type="button" class="chip" id="chipSeason">This season</button>
         <button type="button" class="chip" id="chipAll">All species</button>
       </div>
+      <button type="button" class="top-share-btn" id="topShareBtn" aria-label="Share this app">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="2.5"></circle>
+          <circle cx="6" cy="12" r="2.5"></circle>
+          <circle cx="18" cy="19" r="2.5"></circle>
+          <path d="M8.2 11.1l7.7-4.7"></path>
+          <path d="M8.2 12.9l7.7 4.7"></path>
+        </svg>
+        <span>Share this app</span>
+      </button>
       <details class="glossary" id="visualPanel">
         <summary>Don't know the name? Browse by looks</summary>
         <div class="visual-group">
@@ -800,6 +834,7 @@
   const MONTH_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   const main = document.getElementById('main');
+  const topShareBtn = document.getElementById('topShareBtn');
   const shareSaveBtn = document.getElementById('shareSaveBtn');
   const shareMenu = document.getElementById('shareMenu');
   const shareWithFriendBtn = document.getElementById('shareWithFriendBtn');
@@ -810,6 +845,10 @@
   function isIOSDevice() {
     return /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+
+  function isStandaloneMode() {
+    return navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
   }
 
   function showInstallHint(text) {
@@ -881,6 +920,10 @@
 
   async function saveToHomeScreen() {
     closeShareMenu();
+    if (isStandaloneMode()) {
+      showInstallHint('This app is already saved to your Home Screen. Use Share this app near the top to send it to a friend.');
+      return;
+    }
     if (installPrompt) {
       installPrompt.prompt();
       try {
@@ -902,6 +945,7 @@
   if (shareSaveBtn) {
     shareSaveBtn.addEventListener('click', toggleShareMenu);
   }
+  if (topShareBtn) topShareBtn.addEventListener('click', shareWithFriend);
   if (shareWithFriendBtn) shareWithFriendBtn.addEventListener('click', shareWithFriend);
   if (saveToHomeBtn) saveToHomeBtn.addEventListener('click', saveToHomeScreen);
 
