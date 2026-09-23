@@ -153,6 +153,37 @@
     border-color: var(--gum);
     color: var(--gum-deep);
   }
+  .share-menu {
+    display: grid;
+    gap: 6px;
+    max-width: 260px;
+    margin: -6px 0 14px 0;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper-raised);
+  }
+  .share-menu[hidden] {
+    display: none;
+  }
+  .share-menu button {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.82rem;
+    text-align: left;
+  }
+  .share-menu button:hover,
+  .share-menu button:focus-visible {
+    border-color: var(--line);
+    background: var(--paper);
+    color: var(--gum-deep);
+  }
   .install-hint {
     display: block;
     margin: 0 0 14px 0;
@@ -727,7 +758,7 @@
   </details>
 
   <footer>
-    <button type="button" class="share-save-btn" id="shareSaveBtn" aria-label="Share or save this app" style="margin: 0 0 14px 0;">
+    <button type="button" class="share-save-btn" id="shareSaveBtn" aria-label="Share or save this app" aria-expanded="false" aria-controls="shareMenu" style="margin: 0 0 14px 0;">
       <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="18" cy="5" r="2.5"></circle>
         <circle cx="6" cy="12" r="2.5"></circle>
@@ -737,6 +768,10 @@
       </svg>
       <span>Share or save this app</span>
     </button>
+    <div class="share-menu" id="shareMenu" hidden>
+      <button type="button" id="shareWithFriendBtn">Share with a friend</button>
+      <button type="button" id="saveToHomeBtn">Save to home screen</button>
+    </div>
     <div id="installHint" class="install-hint" hidden>On iPhone: tap Share, then Add to Home Screen. On Android: use the install prompt if available.</div>
     <p>Frequency shows the share of eBird checklists from this reserve that reported each species in that week of the year, not raw counts. A quiet week with few checklists submitted can look sparse even for common birds, so treat this as a guide, not a guarantee.</p>
     <p>Built from the <a href="https://ebird.org/hotspot/L5765385" target="_blank" rel="noopener">Michael Eades Reserve eBird hotspot</a> (L5765385) bar chart data. A pilot template: the same approach could power a guide for any reserve with enough eBird coverage.</p>
@@ -764,6 +799,9 @@
 
   const main = document.getElementById('main');
   const shareSaveBtn = document.getElementById('shareSaveBtn');
+  const shareMenu = document.getElementById('shareMenu');
+  const shareWithFriendBtn = document.getElementById('shareWithFriendBtn');
+  const saveToHomeBtn = document.getElementById('saveToHomeBtn');
   const installHint = document.getElementById('installHint');
   let installPrompt = null;
 
@@ -778,24 +816,25 @@
     installHint.textContent = text;
   }
 
-  async function handleShareOrSave() {
+  function closeShareMenu() {
+    if (!shareMenu || !shareSaveBtn) return;
+    shareMenu.hidden = true;
+    shareSaveBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleShareMenu() {
+    if (!shareMenu || !shareSaveBtn) return;
+    const isOpen = !shareMenu.hidden;
+    shareMenu.hidden = isOpen;
+    shareSaveBtn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  async function shareWithFriend() {
     const shareText = 'Check out the Michael Eades Reserve bird guide.';
     const shareUrl = window.location.href;
-
-    if (installPrompt) {
-      installPrompt.prompt();
-      try {
-        await installPrompt.userChoice;
-      } catch (error) {
-        // no-op
-      }
-      installPrompt = null;
-      showInstallHint('Add this app to your home screen from the installation prompt.');
-      return;
-    }
+    closeShareMenu();
 
     if (isIOSDevice()) {
-      showInstallHint('On iPhone: tap Share, then Add to Home Screen.');
       if (navigator.share) {
         try {
           await navigator.share({
@@ -838,18 +877,36 @@
     }
   }
 
-  if (shareSaveBtn) {
-    shareSaveBtn.addEventListener('click', handleShareOrSave);
+  async function saveToHomeScreen() {
+    closeShareMenu();
+    if (installPrompt) {
+      installPrompt.prompt();
+      try {
+        await installPrompt.userChoice;
+      } catch (error) {
+        // no-op
+      }
+      installPrompt = null;
+      showInstallHint('Add this app to your home screen from the installation prompt.');
+      return;
+    }
+    if (isIOSDevice()) {
+      showInstallHint('On iPhone: tap Share, then Add to Home Screen.');
+      return;
+    }
+    showInstallHint('Use your browser menu and choose Add to Home screen or Install app.');
   }
+
+  if (shareSaveBtn) {
+    shareSaveBtn.addEventListener('click', toggleShareMenu);
+  }
+  if (shareWithFriendBtn) shareWithFriendBtn.addEventListener('click', shareWithFriend);
+  if (saveToHomeBtn) saveToHomeBtn.addEventListener('click', saveToHomeScreen);
 
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     installPrompt = event;
     showInstallHint('Android: tap to install this app on your home screen.');
-    if (shareSaveBtn) {
-      const label = shareSaveBtn.querySelector('span');
-      if (label) label.textContent = 'Save to home screen';
-    }
   });
 
   // ---- Photo integration ---------------------------------------------
