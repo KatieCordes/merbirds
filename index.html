@@ -219,6 +219,26 @@
     font-size: 0.8rem;
     line-height: 1.5;
   }
+  .pull-refresh-indicator {
+    position: fixed;
+    top: env(safe-area-inset-top, 10px);
+    left: 50%;
+    z-index: 10;
+    padding: 6px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    font-size: 0.76rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -140%);
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+  .pull-refresh-indicator.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
   .walk-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -697,6 +717,7 @@
 </style>
 </head>
 <body>
+<div class="pull-refresh-indicator" id="pullRefreshIndicator" aria-live="polite"></div>
 <div class="wrap">
 
   <header class="top">
@@ -834,6 +855,7 @@
   const MONTH_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   const main = document.getElementById('main');
+  const pullRefreshIndicator = document.getElementById('pullRefreshIndicator');
   const topShareBtn = document.getElementById('topShareBtn');
   const shareSaveBtn = document.getElementById('shareSaveBtn');
   const shareMenu = document.getElementById('shareMenu');
@@ -849,6 +871,36 @@
 
   function isStandaloneMode() {
     return navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  }
+
+  function setupStandaloneRefresh() {
+    if (!isStandaloneMode() || !pullRefreshIndicator) return;
+    let startY = 0;
+    let distance = 0;
+    let tracking = false;
+
+    document.addEventListener('touchstart', (event) => {
+      if (window.scrollY > 0 || event.touches.length !== 1) return;
+      startY = event.touches[0].clientY;
+      distance = 0;
+      tracking = true;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (event) => {
+      if (!tracking || event.touches.length !== 1) return;
+      distance = Math.max(0, event.touches[0].clientY - startY);
+      if (distance < 24) return;
+      event.preventDefault();
+      pullRefreshIndicator.textContent = distance >= 72 ? 'Release to refresh' : 'Pull to refresh';
+      pullRefreshIndicator.classList.add('visible');
+    }, { passive: false });
+
+    document.addEventListener('touchend', () => {
+      if (!tracking) return;
+      tracking = false;
+      pullRefreshIndicator.classList.remove('visible');
+      if (distance >= 72) window.location.reload();
+    }, { passive: true });
   }
 
   function showInstallHint(text) {
@@ -954,6 +1006,7 @@
     installPrompt = event;
     showInstallHint('Android: tap to install this app on your home screen.');
   });
+  setupStandaloneRefresh();
 
   // ---- Photo integration ---------------------------------------------
   // Photos are matched to species by a scheduled GitHub Action (see
