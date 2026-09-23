@@ -1523,7 +1523,8 @@
   });
 
   // initial view: current month
-  navigate('month', new Date().getMonth());
+  navigate('month', new Date().getMonth(), true);
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   loadFlickrPhotos();
 })();
 </script>
