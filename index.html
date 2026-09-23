@@ -157,15 +157,15 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    margin-top: 12px;
-    padding: 8px 12px;
+    margin: 0 0 16px auto;
+    padding: 6px 10px;
     border: 1px solid var(--line);
     border-radius: 999px;
     background: transparent;
     color: var(--ink-soft);
     cursor: pointer;
     font: inherit;
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 700;
   }
   .top-share-btn svg {
@@ -721,6 +721,16 @@
 <div class="wrap">
 
   <header class="top">
+    <button type="button" class="top-share-btn" id="topShareBtn" aria-label="Share this app">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="2.5"></circle>
+        <circle cx="6" cy="12" r="2.5"></circle>
+        <circle cx="18" cy="19" r="2.5"></circle>
+        <path d="M8.2 11.1l7.7-4.7"></path>
+        <path d="M8.2 12.9l7.7 4.7"></path>
+      </svg>
+      <span>Share this app</span>
+    </button>
     <div class="top-flex">
       <div class="top-text">
         <span class="pilot-badge">Community bird guide</span>
@@ -743,16 +753,6 @@
         <button type="button" class="chip" id="chipSeason">This season</button>
         <button type="button" class="chip" id="chipAll">All species</button>
       </div>
-      <button type="button" class="top-share-btn" id="topShareBtn" aria-label="Share this app">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="18" cy="5" r="2.5"></circle>
-          <circle cx="6" cy="12" r="2.5"></circle>
-          <circle cx="18" cy="19" r="2.5"></circle>
-          <path d="M8.2 11.1l7.7-4.7"></path>
-          <path d="M8.2 12.9l7.7 4.7"></path>
-        </svg>
-        <span>Share this app</span>
-      </button>
       <details class="glossary" id="visualPanel">
         <summary>Don't know the name? Browse by looks</summary>
         <div class="visual-group">
