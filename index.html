@@ -772,7 +772,7 @@
       <button type="button" id="shareWithFriendBtn">Share with a friend</button>
       <button type="button" id="saveToHomeBtn">Save to home screen</button>
     </div>
-    <div id="installHint" class="install-hint" hidden>On iPhone: tap Share, then Add to Home Screen. On Android: use the install prompt if available.</div>
+    <div id="installHint" class="install-hint" hidden>On iPhone in Safari: tap the Share icon (a square with an upward arrow) in the browser toolbar, then choose Add to Home Screen. On Android: use the install prompt if available.</div>
     <p>Frequency shows the share of eBird checklists from this reserve that reported each species in that week of the year, not raw counts. A quiet week with few checklists submitted can look sparse even for common birds, so treat this as a guide, not a guarantee.</p>
     <p>Built from the <a href="https://ebird.org/hotspot/L5765385" target="_blank" rel="noopener">Michael Eades Reserve eBird hotspot</a> (L5765385) bar chart data. A pilot template: the same approach could power a guide for any reserve with enough eBird coverage.</p>
     <details class="who-eades">
@@ -893,7 +893,7 @@
       return;
     }
     if (isIOSDevice()) {
-      showInstallHint('On iPhone: tap Share, then Add to Home Screen.');
+      showInstallHint('In Safari, tap the Share icon (a square with an upward arrow) in the browser toolbar, then choose Add to Home Screen.');
       return;
     }
     showInstallHint('Use your browser menu and choose Add to Home screen or Install app.');
