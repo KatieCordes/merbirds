@@ -29,6 +29,7 @@ FLICKR_PHOTOSET_IDS = [
 TITLE_ALIASES = {
     "crestedshriketit": "Eastern Shrike-tit",
     "rufousfantail": "Australian Rufous Fantail",
+    "pacificheron": "White-necked Heron",
 }
 
 HTML_PATH = "index.html"
