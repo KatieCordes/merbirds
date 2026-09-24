@@ -28,6 +28,7 @@ FLICKR_PHOTOSET_IDS = [
 # same map if it's ever duplicated elsewhere.
 TITLE_ALIASES = {
     "crestedshriketit": "Eastern Shrike-tit",
+    "rufousfantail": "Australian Rufous Fantail",
 }
 
 HTML_PATH = "index.html"
