@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetches photos from the Michael Eades Reserve Flickr album, matches each
+Fetches photos from Flickr albums, matches each
 one to a species by its title, and writes photos.json for the app to
 fetch as a plain static file.
 
@@ -17,7 +17,10 @@ import urllib.request
 
 FLICKR_API_KEY = os.environ.get("FLICKR_API_KEY", "")
 FLICKR_USER_URL = "https://www.flickr.com/photos/katiecordes/"
-FLICKR_PHOTOSET_ID = "72157720146899842"
+FLICKR_PHOTOSET_IDS = [
+    "72157720146899842",
+    "72177720335780867",
+]
 
 # A photo's title only matches a species if it normalises to an exact
 # name. This covers older/alternate common names used in some titles
@@ -80,14 +83,34 @@ def main():
         print("Could not resolve Flickr user id.", file=sys.stderr)
         sys.exit(1)
 
-    photos_data = flickr_call(
-        "flickr.photosets.getPhotos",
-        photoset_id=FLICKR_PHOTOSET_ID,
-        user_id=nsid,
-        extras="url_q,url_m,owner_name",
-        per_page="500",
-    )
-    photo_list = photos_data.get("photoset", {}).get("photo", [])
+    photo_list = []
+    seen_photo_ids = set()
+    for photoset_id in FLICKR_PHOTOSET_IDS:
+        try:
+            page = 1
+            while True:
+                photos_data = flickr_call(
+                    "flickr.photosets.getPhotos",
+                    photoset_id=photoset_id,
+                    user_id=nsid,
+                    extras="url_q,url_m,owner_name",
+                    per_page="500",
+                    page=page,
+                )
+                if photos_data.get("stat") == "fail":
+                    raise RuntimeError(photos_data.get("message", "Flickr API request failed"))
+                photoset = photos_data.get("photoset", {})
+                for photo in photoset.get("photo", []):
+                    photo_id = photo.get("id")
+                    if photo_id is None or photo_id not in seen_photo_ids:
+                        if photo_id is not None:
+                            seen_photo_ids.add(photo_id)
+                        photo_list.append(photo)
+                if page >= photoset.get("pages", 1):
+                    break
+                page += 1
+        except Exception as exc:
+            print(f"Warning: could not load Flickr album {photoset_id}: {exc}", file=sys.stderr)
 
     result = {}
     matched = 0
